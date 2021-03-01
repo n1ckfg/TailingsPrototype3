@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: StatueLed_mtl
-  m_Shader: {fileID: 4800000, guid: 512d0706d8eef1e4a89f827b45069170, type: 3}
+  m_Shader: {fileID: 4800000, guid: 79eb9aee77f3541e28aeeb86acd9486b, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 1

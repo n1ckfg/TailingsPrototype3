@@ -596,7 +596,7 @@ MonoBehaviour:
   FogTransitionSize: 5
   MaxLightDistance: 128
   AboveFogPercent: 1.58
-  Offset: {x: 21232.639, y: 21232.639, z: 0}
+  Offset: {x: 21235.998, y: 21235.998, z: 0}
 --- !u!1 &651777958
 GameObject:
   m_ObjectHideFlags: 0
@@ -5765,6 +5765,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1b3d3d848a99c9144bf3968b42af85bf, type: 2}
+    - target: {fileID: -2256557583851585386, guid: 78b912fcb9ff4465bb587ab1ace800d3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 78b912fcb9ff4465bb587ab1ace800d3,
         type: 3}
       propertyPath: m_Name
@@ -6362,22 +6367,22 @@ MonoBehaviour:
     e32: -0.00000011920929
     e33: 8.000001
   LastMatrixVP:
-    e00: 0
+    e00: -0.5302653
     e01: 0
-    e02: 0
+    e02: -0.22836843
     e03: 0
-    e10: 0
-    e11: 0
-    e12: 0
-    e13: 0
+    e10: 0.22836843
+    e11: -0.00000006882551
+    e12: -0.5302652
+    e13: 0.00000055060406
     e20: 0
-    e21: 0
-    e22: 0
-    e23: 0
+    e21: 0.000099957004
+    e22: 1.1915802e-11
+    e23: 0.099210344
     e30: 0
-    e31: 0
-    e32: 0
-    e33: 0
+    e31: -1.0000001
+    e32: -0.00000011920929
+    e33: 8.000001
   LastMatrixVPInv:
     e00: 0
     e01: 0
@@ -6691,7 +6696,7 @@ MonoBehaviour:
   FogTransitionSize: 5
   MaxLightDistance: 128
   AboveFogPercent: 1.58
-  Offset: {x: 20905.447, y: 20905.447, z: 0}
+  Offset: {x: 20908.807, y: 20908.807, z: 0}
 --- !u!1001 &1878320823
 PrefabInstance:
   m_ObjectHideFlags: 0
