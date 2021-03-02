@@ -25,6 +25,7 @@ public class LightRig : MonoBehaviour {
         groups = new List<LightGroup>();
 
         vertices = meshFilter.mesh.vertices;
+        Debug.Log("Light rig target mesh has " + vertices.Length + " vertices.");
         points = new LightPoint[vertices.Length];
 
         cols = new Color[vertices.Length];
