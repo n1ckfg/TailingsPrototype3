@@ -145,7 +145,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41084302}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8eb9373aa27620a4f8fd0d9581d38793, type: 3}
   m_Name: 
@@ -648,7 +648,7 @@ MonoBehaviour:
   FogTransitionSize: 5
   MaxLightDistance: 128
   AboveFogPercent: 1.58
-  Offset: {x: 21281.57, y: 21281.57, z: 0}
+  Offset: {x: 21290.184, y: 21290.184, z: 0}
 --- !u!1 &651777958
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,7 +951,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750737579}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d59ae4f317f9b4f8b8d64f71768aaea6, type: 3}
   m_Name: 
@@ -6122,6 +6122,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 78b912fcb9ff4465bb587ab1ace800d3,
         type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 78b912fcb9ff4465bb587ab1ace800d3,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -6784,7 +6789,7 @@ MonoBehaviour:
   FogTransitionSize: 5
   MaxLightDistance: 128
   AboveFogPercent: 1.58
-  Offset: {x: 20954.379, y: 20954.379, z: 0}
+  Offset: {x: 20962.992, y: 20962.992, z: 0}
 --- !u!1 &1884389473
 GameObject:
   m_ObjectHideFlags: 0

@@ -551,7 +551,7 @@ MonoBehaviour:
   FogTransitionSize: 5
   MaxLightDistance: 128
   AboveFogPercent: 1.58
-  Offset: {x: 20559.791, y: 20559.791, z: 0}
+  Offset: {x: 20583.879, y: 20583.879, z: 0}
 --- !u!1 &651777958
 GameObject:
   m_ObjectHideFlags: 0
@@ -5513,8 +5513,55 @@ PrefabInstance:
       propertyPath: DensityStrength
       value: 1.11
       objectReference: {fileID: 0}
+    - target: {fileID: 19977256, guid: e48690596255ced4b9c842d25add2a50, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e48690596255ced4b9c842d25add2a50, type: 3}
+--- !u!1 &1125279751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1125279752}
+  - component: {fileID: 1125279753}
+  m_Layer: 0
+  m_Name: OSC
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1125279752
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125279751}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1125279753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125279751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9ad73753f168b43a8752d968b4612c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1163617835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5851,7 +5898,7 @@ MonoBehaviour:
   - {fileID: 0}
   NoiseTexture3D: {fileID: 11700000, guid: ea166c3018822e44fb93eca537a773fc, type: 2}
   BlitMatrix:
-    e00: -8.414579
+    e00: -9.284426
     e01: 0
     e02: 0
     e03: -7.458009
@@ -5868,7 +5915,7 @@ MonoBehaviour:
     e32: 0
     e33: 1
   BlitMatrixMV:
-    e00: 8.414579
+    e00: 9.284426
     e01: 0
     e02: 0
     e03: 0
@@ -5888,7 +5935,7 @@ MonoBehaviour:
     e00: 10.345752
     e01: 0
     e02: 0
-    e03: -0.0000000032491698
+    e03: 0.000000016699573
     e10: 0
     e11: -1.0345752
     e12: 0
@@ -5901,7 +5948,7 @@ MonoBehaviour:
     e31: 0
     e32: 1.01
     e33: 0
-  BlitScale: {x: 8.414579, y: 0.5973123, z: 1.01}
+  BlitScale: {x: 9.284426, y: 0.5973123, z: 1.01}
   resolution: 1
   SampleCount: 8
   DirectionalSampleCount: 14
@@ -5948,10 +5995,10 @@ MonoBehaviour:
   MapToLDR: 0
   RemoveColorBanding: 1
   MatrixVP:
-    e00: -1.2295032
+    e00: -1.1143125
     e01: 0
     e02: 0
-    e03: -9.169645
+    e03: -8.310553
     e10: 0
     e11: -1.7320508
     e12: -0
@@ -5965,10 +6012,10 @@ MonoBehaviour:
     e32: -1
     e33: 7.60148
   LastMatrixVP:
-    e00: -1.2295032
+    e00: -1.1143125
     e01: 0
     e02: 0
-    e03: -9.169645
+    e03: -8.310553
     e10: 0
     e11: 1.7320508
     e12: 0
@@ -6142,7 +6189,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701140756}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d59ae4f317f9b4f8b8d64f71768aaea6, type: 3}
   m_Name: 
@@ -6308,7 +6355,7 @@ MonoBehaviour:
   FogTransitionSize: 5
   MaxLightDistance: 128
   AboveFogPercent: 1.58
-  Offset: {x: 20232.953, y: 20232.953, z: 0}
+  Offset: {x: 20257.041, y: 20257.041, z: 0}
 --- !u!1 &1884389473
 GameObject:
   m_ObjectHideFlags: 0
