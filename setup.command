@@ -10,3 +10,7 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 cd $DIR
 
+cd Assets/Plugins
+wget "https://fox-gieg.com/patches/github/n1ckfg/TailingsPrototype3/Assets/Plugins.zip"
+unzip Plugins.zip
+rm Plugins.zip
