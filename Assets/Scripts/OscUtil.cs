@@ -71,8 +71,8 @@ public static class OscUtil {
 		BinaryReader br = new BinaryReader(stream);
 		int len = (int)(bytes.Length / 12);
 		for (int i = 0; i < len; i++) {
-			Vector3 v = new Vector3(br.ReadSingle(), br.ReadSingle(), br.ReadSingle()) / 255f;
-			returns.Add(new Color(v.x, v.y, v.z));
+            Vector3 v = new Vector3(br.ReadSingle(), br.ReadSingle(), br.ReadSingle()) / 255f;
+            returns.Add(Color.blue);// new Color(v.x, v.y, v.z));
 		}
 		return returns;
 	}

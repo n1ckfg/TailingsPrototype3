@@ -8,6 +8,42 @@ import java.nio.ByteBuffer;
 import java.util.Base64;
 import javax.imageio.ImageIO;
 
+
+// https://processing.org/reference/rightshift.html
+byte[] colorIntToBytesRGBA(color argb) {
+  int r = (argb >> 16) & 0xFF;  // Faster way of getting red(argb)
+  int g = (argb >> 8) & 0xFF;   // Faster way of getting green(argb)
+  int b = argb & 0xFF;          // Faster way of getting blue(argb)
+  int a = (argb >> 24) & 0xFF;
+  byte[] returns = { (byte) r, (byte) g, (byte) b, (byte) a };
+  return returns;
+}
+
+byte[] colorIntToBytesRGB(color argb) {
+  int r = (argb >> 16) & 0xFF;  // Faster way of getting red(argb)
+  int g = (argb >> 8) & 0xFF;   // Faster way of getting green(argb)
+  int b = argb & 0xFF;          // Faster way of getting blue(argb)
+  //int a = (argb >> 24) & 0xFF;
+  byte[] returns = { (byte) r, (byte) g, (byte) b };
+  return returns;
+}
+
+color bytesToColorIntRGBA(byte[] rgba) {
+  int r = (int) rgba[0];
+  int g = (int) rgba[1];
+  int b = (int) rgba[2];
+  int a = (int) rgba[3];
+  return color(r, g, b, a);
+}
+
+color bytesToColorIntRGB(byte[] rgba) {
+  int r = (int) rgba[0];
+  int g = (int) rgba[1];
+  int b = (int) rgba[2];
+  //int a = (int) rgba[3];
+  return color(r, g, b);
+}
+
 // ~ ~ ~ ASCII ~ ~ ~
 // http://ascii.cl/control-characters.htm
 // https://stackoverflow.com/questions/36519977/how-to-convert-string-into-a-7-bit-binary
@@ -163,12 +199,11 @@ PImage bImageToPImage(BufferedImage bImg) {
 
 byte[] convertImageToByteArray(PImage img) {
   img.loadPixels();
-  int[] px = img.pixels;
-  ByteBuffer bb = ByteBuffer.allocate((2 + px.length) * 4);
-  bb.putInt(img.width);
-  bb.putInt(img.height);
-  for (int d : px) {
-    bb.putInt(d);
+
+  ByteBuffer bb = ByteBuffer.allocate(img.pixels.length * 4);
+  for (int pixel : img.pixels) {
+    byte[] rgba = colorIntToBytesRGB(pixel);
+    bb.put(rgba);
   }
   return bb.array();
 }

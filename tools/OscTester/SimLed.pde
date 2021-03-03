@@ -5,7 +5,7 @@ class SimLed {
 
   SimLed(int _numLeds) {
     numLeds = _numLeds;
-    int dim = 100;// int(sqrt((float) numLeds));
+    int dim = int(sqrt((float) numLeds));
     buffer = createImage(dim, dim, RGB);
     buffer.loadPixels();
   }

@@ -602,7 +602,7 @@ MonoBehaviour:
   FogTransitionSize: 5
   MaxLightDistance: 128
   AboveFogPercent: 1.58
-  Offset: {x: 21299.29, y: 21299.29, z: 0}
+  Offset: {x: 21323.281, y: 21323.281, z: 0}
 --- !u!1 &651777958
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,7 +892,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750737579}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
@@ -5688,10 +5688,9 @@ MonoBehaviour:
   groupPrefab: {fileID: 3166619525214049967, guid: f020c31efd0263c4082ae4945ed4a7dc,
     type: 3}
   groups: []
-  updateColorInterval: 2
+  updateColorInterval: 0.5
   pointBatch: 4000
   ready: 0
-  texSize: 256
   defaultColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!1001 &932262570
 PrefabInstance:
@@ -6338,14 +6337,14 @@ MonoBehaviour:
     e01: -0.000000054375075
     e02: 0.000000029946
     e03: 0
-    e10: -0.00000027405684
-    e11: 1.1552159
-    e12: 0.00000014524186
+    e10: 0.00000027405684
+    e11: -1.1552159
+    e12: -0.00000014524186
     e13: 0
-    e20: 0.0000009436641
-    e21: 0.00000045768886
-    e22: 1.1002202
-    e23: -0.20001984
+    e20: -9.4306965e-11
+    e21: -4.5740058e-11
+    e22: -0.00010995272
+    e23: 0.10001
     e30: 0.00000094347547
     e31: 0.0000004575974
     e32: 1.1000003
@@ -6401,14 +6400,14 @@ MonoBehaviour:
     e01: 0
     e02: -0.22836843
     e03: 0
-    e10: 0.22836843
-    e11: -0.00000006882551
-    e12: -0.5302652
-    e13: 0.00000055060406
+    e10: -0.22836843
+    e11: 0.00000006882551
+    e12: 0.5302652
+    e13: -0.00000055060406
     e20: 0
-    e21: -1.0002
-    e22: -0.00000011923312
-    e23: 7.8015804
+    e21: 0.000099957004
+    e22: 1.1915802e-11
+    e23: 0.099210344
     e30: 0
     e31: -1.0000001
     e32: -0.00000011920929
@@ -6423,9 +6422,9 @@ MonoBehaviour:
     e12: -0.5302652
     e13: 0.00000055060406
     e20: 0
-    e21: -1.0002
-    e22: -0.00000011923312
-    e23: 7.8015804
+    e21: 0.000099957004
+    e22: 1.1915802e-11
+    e23: 0.099210344
     e30: 0
     e31: -1.0000001
     e32: -0.00000011920929
@@ -6614,7 +6613,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightRig: {fileID: 917705418}
-  receivePort: 9000
+  oscMode: 1
+  msgMode: 0
+  outIP: 127.0.0.1
+  outPort: 9999
+  inPort: 9000
+  rxBufferSize: 1024000
   bciVal: []
 --- !u!4 &1743049713
 Transform:
@@ -6789,7 +6793,7 @@ MonoBehaviour:
   FogTransitionSize: 5
   MaxLightDistance: 128
   AboveFogPercent: 1.58
-  Offset: {x: 20972.098, y: 20972.098, z: 0}
+  Offset: {x: 20996.09, y: 20996.09, z: 0}
 --- !u!1 &1884389473
 GameObject:
   m_ObjectHideFlags: 0

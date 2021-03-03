@@ -13,7 +13,7 @@ void setup() {
   simBciHeight = height/2;
   simBciNodeWidth = simBciWidth / simBci.nodes.length;
   
-  simLed = new SimLed(43711);
+  simLed = new SimLed(15000);//43711);
 }
 
 void draw() {

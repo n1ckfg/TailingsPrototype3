@@ -15,7 +15,6 @@ public class LightRig : MonoBehaviour {
     public float updateColorInterval = 1f;
     public int pointBatch = 10;
     public bool ready = false;
-    public int texSize = 256;
     public Color defaultColor;
 
     private Vector3[] vertices;

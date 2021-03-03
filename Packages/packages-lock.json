@@ -1,14 +1,5 @@
 {
   "dependencies": {
-    "com.iam1337.extosc": {
-      "version": "https://github.com/iam1337/extOSC.git#upm",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.ugui": "1.0.0"
-      },
-      "hash": "c6be0ac8a156c263f2b2606202afad8c8c5b710a"
-    },
     "com.unity.collab-proxy": {
       "version": "1.2.16",
       "depth": 0,

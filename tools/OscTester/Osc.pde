@@ -4,6 +4,7 @@ import netP5.*;
 String ipNumber = "127.0.0.1";
 int receivePort = 9001;
 int sendPort = 9000;
+int datagramSize = 1024000;
 OscP5 oscP5;
 NetAddress myRemoteLocation;
 
@@ -12,7 +13,10 @@ float[] oscReceiveData = { 0,0,0 };
 float[] oscSendData = { 0 };
 
 void oscSetup() {
-  oscP5 = new OscP5(this, receivePort);
+  OscProperties oscProperties = new OscProperties();
+  oscProperties.setListeningPort(receivePort);
+  oscProperties.setDatagramSize(datagramSize);
+  oscP5 = new OscP5(this, oscProperties);
   myRemoteLocation = new NetAddress(ipNumber, sendPort);
 }
 
