@@ -20,13 +20,15 @@ void setup() {
   simLed = new SimLed(simLedCount);
   int dim = int(sqrt(simLed.numLeds));
   simLedPreview = createImage(dim, dim, RGB);
-  simLedPreviewW = simLedPreview.width / simLedPreviewScale;
-  simLedPreviewH = simLedPreview.height / simLedPreviewScale;
+  simLedPreviewScale = simBciHeight/dim;
+  simLedPreviewW = dim*simLedPreviewScale;
+  simLedPreviewH = dim*simLedPreviewScale;
   simLedPreview.loadPixels();
 }
 
 void draw() {
   background(0);
+  noTint();
   
   simBci.update();
   simLed.update();
@@ -49,5 +51,8 @@ void draw() {
     }
   }
   simLedPreview.updatePixels();
-  image(simLedPreview, 0, height/2, simLedPreview.width*simLedPreviewW, simLedPreview.height*simLedPreviewH);
+  image(simLedPreview, 0, height/2, simLedPreviewW, simLedPreviewH);
+  
+  tint(simLed.ledBrightness);
+  image(simLedPreview, simLedPreviewW+1, height/2, simLedPreviewW, simLedPreviewH);
 }

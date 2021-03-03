@@ -12,7 +12,9 @@ public class LightRig : MonoBehaviour {
     public GameObject groupPrefab;
     public LightPoint[] points;
     public List<LightGroup> groups;
-    public float updateColorInterval = 1f;
+    public float ledUpdateInterval = 1f;
+    public float ledLerpSpeed = 0.5f;
+    public float ledScale = 1f;
     public int pointBatch = 10;
     public bool ready = false;
     public Color defaultColor;
@@ -21,6 +23,8 @@ public class LightRig : MonoBehaviour {
     private Color[] cols;
 
     private IEnumerator Start() {
+        ledScale = Mathf.Clamp(ledScale, 1f, 255f);
+
         groups = new List<LightGroup>();
 
         vertices = meshFilter.mesh.vertices;
@@ -69,7 +73,7 @@ public class LightRig : MonoBehaviour {
 
             setAllCols();
 
-            yield return new WaitForSeconds(updateColorInterval);
+            yield return new WaitForSeconds(ledUpdateInterval);
         }
     }
 

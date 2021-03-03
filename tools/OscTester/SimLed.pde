@@ -2,7 +2,8 @@ class SimLed {
 
   byte[] buffer;
   int numLeds;
-
+  float ledBrightness = 255;
+  
   SimLed(int _numLeds) {
     numLeds = _numLeds;
     buffer = new byte[numLeds*3];

@@ -676,7 +676,7 @@ MonoBehaviour:
   FogTransitionSize: 5
   MaxLightDistance: 128
   AboveFogPercent: 1.58
-  Offset: {x: 21356.627, y: 21356.627, z: 0}
+  Offset: {x: 21366.63, y: 21366.63, z: 0}
 --- !u!1 &651777958
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,7 +870,9 @@ MonoBehaviour:
   groupPrefab: {fileID: 3166619525214049967, guid: f020c31efd0263c4082ae4945ed4a7dc,
     type: 3}
   groups: []
-  updateColorInterval: 0.5
+  ledUpdateInterval: 0.1
+  ledLerpSpeed: 0.8
+  ledScale: 4
   pointBatch: 240
   ready: 0
   defaultColor: {r: 1, g: 0, b: 0, a: 0}
@@ -6712,7 +6714,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightRig: {fileID: 698434351}
-  ledScale: 63
   oscMode: 1
   msgMode: 0
   outIP: 127.0.0.1
@@ -6893,7 +6894,7 @@ MonoBehaviour:
   FogTransitionSize: 5
   MaxLightDistance: 128
   AboveFogPercent: 1.58
-  Offset: {x: 21029.436, y: 21029.436, z: 0}
+  Offset: {x: 21039.44, y: 21039.44, z: 0}
 --- !u!1 &1884389473
 GameObject:
   m_ObjectHideFlags: 0
