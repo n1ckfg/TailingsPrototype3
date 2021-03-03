@@ -49,6 +49,7 @@ Shader "Nick/VertexColor_Normal" {
 			 fixed4 Occ = tex2D(_OcclusionTex, IN.uv_MainTex);
 			 o.Albedo = c.rgb * IN.vertexColor * Occ; // Combine normal color with the vertex color
 			 o.Normal = UnpackNormal(tex2D(_NormTex, IN.uv_MainTex));
+			 o.Emission = c.rgb * IN.vertexColor;
 			 // Metallic and smoothness come from slider variables
              o.Metallic = _Metallic;
              o.Smoothness = _Glossiness;

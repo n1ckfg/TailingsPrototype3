@@ -122,6 +122,57 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &51732054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 51732056}
+  - component: {fileID: 51732055}
+  m_Layer: 0
+  m_Name: LIGHT_RIG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &51732055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51732054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02bafc96daced6f4e9604eb5e8666e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshFilter: {fileID: 0}
+  groupPrefab: {fileID: 3166619525214049967, guid: f020c31efd0263c4082ae4945ed4a7dc,
+    type: 3}
+  groups: []
+  updateColorInterval: 0.5
+  pointBatch: 4000
+  ready: 0
+  defaultColor: {r: 1, g: 0, b: 0, a: 0}
+--- !u!4 &51732056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51732054}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &96328323
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,7 +602,7 @@ MonoBehaviour:
   FogTransitionSize: 5
   MaxLightDistance: 128
   AboveFogPercent: 1.58
-  Offset: {x: 20607.8, y: 20607.8, z: 0}
+  Offset: {x: 20608.488, y: 20608.488, z: 0}
 --- !u!1 &651777958
 GameObject:
   m_ObjectHideFlags: 0
@@ -5562,13 +5613,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d35f81f91494c43bfbe02531396a2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  receivePort: 9000
-  bciVal1: 0
-  bciVal2: 0
-  bciVal3: 0
-  bciVal4: 0
-  bciVal5: 0
-  bciVal6: 0
+  lightRig: {fileID: 51732055}
+  oscMode: 1
+  msgMode: 0
+  outIP: 127.0.0.1
+  outPort: 9999
+  inPort: 9998
+  rxBufferSize: 1024000
+  bciVal: []
 --- !u!1001 &1163617835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6362,7 +6414,7 @@ MonoBehaviour:
   FogTransitionSize: 5
   MaxLightDistance: 128
   AboveFogPercent: 1.58
-  Offset: {x: 20280.963, y: 20280.963, z: 0}
+  Offset: {x: 20281.65, y: 20281.65, z: 0}
 --- !u!1 &1884389473
 GameObject:
   m_ObjectHideFlags: 0

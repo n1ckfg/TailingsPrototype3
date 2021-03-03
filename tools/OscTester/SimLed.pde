@@ -1,24 +1,27 @@
 class SimLed {
 
-  PImage buffer;
+  byte[] buffer;
   int numLeds;
 
   SimLed(int _numLeds) {
     numLeds = _numLeds;
-    int dim = int(sqrt((float) numLeds));
-    buffer = createImage(dim, dim, RGB);
-    buffer.loadPixels();
+    buffer = new byte[numLeds*3];
   }
   
   void update() {
-    for (int i=0; i<buffer.pixels.length; i++) {
-      buffer.pixels[i] = color(random(255),127,63);
+    for (int i=0; i<buffer.length; i+=3) {
+      color argb = color(random(255),127,63);
+      int r = (argb >> 16) & 0xFF;  // Faster way of getting red(argb)
+      int g = (argb >> 8) & 0xFF;   // Faster way of getting green(argb)
+      int b = argb & 0xFF;          // Faster way of getting blue(argb)
+      buffer[i] = byte(r);
+      buffer[i+1] = byte(g);
+      buffer[i+2] = byte(b);
     }
-    buffer.updatePixels();
     
     OscMessage msg = new OscMessage("/simled");
     
-    msg.add(convertImageToByteArray(buffer));
+    msg.add(buffer);
     
     oscP5.send(msg, myRemoteLocation);
   }

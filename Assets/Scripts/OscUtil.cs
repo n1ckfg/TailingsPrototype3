@@ -69,10 +69,11 @@ public static class OscUtil {
 
 		MemoryStream stream = new MemoryStream(bytes);
 		BinaryReader br = new BinaryReader(stream);
-		int len = (int)(bytes.Length / 12);
-		for (int i = 0; i < len; i++) {
-            Vector3 v = new Vector3(br.ReadSingle(), br.ReadSingle(), br.ReadSingle()) / 255f;
-            returns.Add(Color.blue);// new Color(v.x, v.y, v.z));
+		for (int i = 0; i < bytes.Length; i += 12) {
+            float r = Mathf.Clamp(br.ReadSingle() / 255f, 0f, 1f);
+            float g = Mathf.Clamp(br.ReadSingle() / 255f, 0f, 1f);
+            float b = Mathf.Clamp(br.ReadSingle() / 255f, 0f, 1f);
+            returns.Add(new Color(r, g, b));
 		}
 		return returns;
 	}

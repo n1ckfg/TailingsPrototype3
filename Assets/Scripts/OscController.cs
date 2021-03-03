@@ -10,6 +10,7 @@ using UnityOSC;
 public class OscController : MonoBehaviour {
 
     public LightRig lightRig;
+    public float ledScale = 255f;
     public enum OscMode { SEND, RECEIVE, SEND_RECEIVE };
     public OscMode oscMode = OscMode.RECEIVE;
     public enum MsgMode { P5, OF };
@@ -49,6 +50,7 @@ public class OscController : MonoBehaviour {
 
         newData = new List<object>();
         bciVal = new float[6];
+        ledScale = Mathf.Clamp(ledScale, 1f, 255f);
     }
 
     // Reads all the messages received between the previous update and this one
@@ -101,7 +103,17 @@ public class OscController : MonoBehaviour {
                 break;
             case "/simled":
                 if (lightRig.ready) {
-                    List<Color> colors = OscUtil.bytesToColors((byte[]) newData[0]);
+                    List<Color> colors = new List<Color>();
+                    byte[] newBytes = (byte[]) newData[0];
+                    for (int i = 0; i < newBytes.Length; i += 3) {
+                        //float r = Mathf.Clamp(newBytes[i] / 255f, 0f, 1f);
+                        //float g = Mathf.Clamp(newBytes[i+1] / 255f, 0f, 1f);
+                        //float b = Mathf.Clamp(newBytes[i+2] / 255f, 0f, 1f);
+                        //colors.Add(new Color(r, g, b));
+                        Vector3 col = new Vector3(newBytes[i], newBytes[i+1], newBytes[i+2]) / ledScale;
+                        colors.Add(new Color(col.x, col.y, col.z));
+                    }
+
                     Debug.Log("Received " + colors.Count + " colors.");
                     for (int i = 0; i < colors.Count; i++) {
                         lightRig.points[i].color = colors[i];
