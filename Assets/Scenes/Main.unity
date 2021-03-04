@@ -676,7 +676,7 @@ MonoBehaviour:
   FogTransitionSize: 5
   MaxLightDistance: 128
   AboveFogPercent: 1.58
-  Offset: {x: 21404.404, y: 21404.404, z: 0}
+  Offset: {x: 21425.617, y: 21425.617, z: 0}
 --- !u!1 &651777958
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,7 +992,7 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -6894,7 +6894,7 @@ MonoBehaviour:
   FogTransitionSize: 5
   MaxLightDistance: 128
   AboveFogPercent: 1.58
-  Offset: {x: 21077.213, y: 21077.213, z: 0}
+  Offset: {x: 21098.426, y: 21098.426, z: 0}
 --- !u!1 &1884389473
 GameObject:
   m_ObjectHideFlags: 0
