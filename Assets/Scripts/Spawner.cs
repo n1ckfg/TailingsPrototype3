@@ -26,20 +26,20 @@ public class Spawner : MonoBehaviour {
 	private void Update() {
 		for (int i=0; i<flightControls.Length; i++) {
             // How fast the model flies on its trajectory
-            flightControls[i].MainSpeed = oscController.ecgData.bpm; // default 1f; 
+            flightControls[i].MainSpeed = 2f;// oscController.ecgData.bpm; // default 1f; 
 
             // How far the object flies
-            flightControls[i].RangeValue = new Vector3(oscController.ecgData.ecgCooked, oscController.ecgData.ecgCooked, oscController.ecgData.ecgCooked); // default Vector3.one;
+            flightControls[i].RangeValue = Vector3.one; // default Vector3.one;
 
             // Multiplier for range value, applied to all axes
-            flightControls[i].RangeMul = oscController.ecgData.r2r; // default 5f; 
+            flightControls[i].RangeMul = 10f; // oscController.ecgData.ecgCooked; // default 5f; 
 
             // Additional translation on y axis if you want movement to be like butterfly flight
-            flightControls[i].AddYSin = oscController.ecgData.resp;// default 1f;
-            flightControls[i].AddYSinTimeSpeed = oscController.ecgData.respRate; // default 1f;
+            flightControls[i].AddYSin = 1f; // oscController.ecgData.resp;// default 1f;
+            flightControls[i].AddYSinTimeSpeed = 1f;// oscController.ecgData.respRate; // default 1f;
 
             // How fast model should rotate to its forward movement direction
-            flightControls[i].RotateForwardSpeed = oscController.ecgData.ecgRaw; // default 10f; 
+            flightControls[i].RotateForwardSpeed = 10f;// oscController.ecgData.r2r; // default 10f; 
 
         }
 	}

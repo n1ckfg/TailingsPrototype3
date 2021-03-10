@@ -6575,7 +6575,7 @@ MonoBehaviour:
   msgMode: 0
   outIP: 127.0.0.1
   outPort: 9999
-  inPort: 9000
+  inPort: 6868
   rxBufferSize: 1024000
 --- !u!4 &1743049713
 Transform:

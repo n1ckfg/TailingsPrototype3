@@ -141,25 +141,25 @@ public class OscController : MonoBehaviour {
         }
 
         switch (newAddress) {
-            case "/active":
+            case "/module/1/active":
                 ecgData.active = (int) newData[0];
                 break;
-            case "/ecgRaw":
+            case "/module/1/ecgRaw":
                 ecgData.ecgRaw = (float) newData[0];
                 break;
-            case "/ecgCooked":
+            case "/module/1/ecgCooked":
                 ecgData.ecgCooked = (float) newData[0];
                 break;
-            case "/bpm":
+            case "/module/1/bpm":
                 ecgData.bpm = (float) newData[0];
                 break;
-            case "/r2r":
+            case "/module/1/r2r":
                 ecgData.r2r = (float) newData[0];
                 break;
-            case "/resp":
+            case "/module/1/resp":
                 ecgData.resp = (float) newData[0];
                 break;
-            case "/respRate":
+            case "/module/1/respRate":
                 ecgData.respRate = (float) newData[0];
                 break;
             case "/emotions":
