@@ -9,7 +9,35 @@ using UnityOSC;
 
 public class OscController : MonoBehaviour {
 
+	[Serializable]
+	public struct EcgData {
+        public int active;
+        public float ecgRaw;
+        public float ecgCooked;
+        public float bpm;
+        public float r2r;
+        public float resp;
+        public float respRate;
+	}
+
+	[Serializable]
+	public struct EmoData {
+        public float delight;
+        public float desire;
+        public float sadness;
+        public float fear;
+        public float ambivalence;
+        public float aggressiveness;
+        public float friendliness;
+        public float excitement;
+        public float cowardice;
+        public float melancholy;
+	}
+
+    public EcgData ecgData;
+    public EmoData emoData;
     public LightRig lightRig;
+
     public enum OscMode { SEND, RECEIVE, SEND_RECEIVE };
     public OscMode oscMode = OscMode.RECEIVE;
     public enum MsgMode { P5, OF };
@@ -18,8 +46,6 @@ public class OscController : MonoBehaviour {
     public int outPort = 9999;
     public int inPort = 9998;
     public int rxBufferSize = 1024000;//1024;
-
-    public float[] bciVal;
 
     private OSCServer myServer;
     private int bufferSize = 100; // Buffer size of the application (stores 100 messages from different servers)
@@ -48,7 +74,8 @@ public class OscController : MonoBehaviour {
         }
 
         newData = new List<object>();
-        bciVal = new float[6];
+
+        initStructs();
     }
 
     // Reads all the messages received between the previous update and this one
@@ -71,6 +98,29 @@ public class OscController : MonoBehaviour {
         }
     }
 
+	private void initStructs() {
+        ecgData = new EcgData();
+        ecgData.active = 0;
+        ecgData.ecgRaw = 0f;
+        ecgData.ecgCooked = 0f;
+        ecgData.bpm = 0f;
+        ecgData.r2r = 0f;
+        ecgData.resp = 0f;
+        ecgData.respRate = 0f;
+
+        emoData = new EmoData();
+        emoData.delight = 0f;
+        emoData.desire = 0f;
+        emoData.sadness = 0f;
+        emoData.fear = 0f;
+        emoData.ambivalence = 0f;
+        emoData.aggressiveness = 0f;
+        emoData.friendliness = 0f;
+        emoData.excitement = 0f;
+        emoData.cowardice = 0f;
+        emoData.melancholy = 0f;
+    }
+
     // Process OSC message
     private void receivedOSC(OSCPacket pckt) {
         if (pckt == null) {
@@ -91,13 +141,38 @@ public class OscController : MonoBehaviour {
         }
 
         switch (newAddress) {
-            case "/simbci":
-                bciVal[0] = (float) newData[0];
-                bciVal[1] = (float) newData[1];
-                bciVal[2] = (float) newData[2];
-                bciVal[3] = (float) newData[3];
-                bciVal[4] = (float) newData[4];
-                bciVal[5] = (float) newData[5];
+            case "/active":
+                ecgData.active = (int) newData[0];
+                break;
+            case "/ecgRaw":
+                ecgData.ecgRaw = (float) newData[0];
+                break;
+            case "/ecgCooked":
+                ecgData.ecgCooked = (float) newData[0];
+                break;
+            case "/bpm":
+                ecgData.bpm = (float) newData[0];
+                break;
+            case "/r2r":
+                ecgData.r2r = (float) newData[0];
+                break;
+            case "/resp":
+                ecgData.resp = (float) newData[0];
+                break;
+            case "/respRate":
+                ecgData.respRate = (float) newData[0];
+                break;
+            case "/emotions":
+                emoData.delight = (float) newData[0];
+                emoData.desire = (float) newData[1];
+                emoData.sadness = (float) newData[2];
+                emoData.fear = (float) newData[3];
+                emoData.ambivalence = (float) newData[4];
+                emoData.aggressiveness = (float) newData[5];
+                emoData.friendliness = (float) newData[6];
+                emoData.excitement = (float) newData[7];
+                emoData.cowardice = (float) newData[8];
+                emoData.melancholy = (float) newData[9];
                 break;
             case "/simled":
                 if (lightRig.ready) {

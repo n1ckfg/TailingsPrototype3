@@ -393,9 +393,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f105413fefd89674b82a4ec66c32d4a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oscController: {fileID: 1743049712}
   prefab: {fileID: 8691791965694728253, guid: 3dbadf4eba1b39340a5b7fba60a7e2a4, type: 3}
   numObj: 10
   range: 10
+  flightControls: []
 --- !u!4 &606473643
 Transform:
   m_ObjectHideFlags: 0
@@ -6549,6 +6551,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d35f81f91494c43bfbe02531396a2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ecgData:
+    active: 0
+    ecgRaw: 0
+    ecgCooked: 0
+    bpm: 0
+    r2r: 0
+    resp: 0
+    respRate: 0
+  emoData:
+    delight: 0
+    desire: 0
+    sadness: 0
+    fear: 0
+    ambivalence: 0
+    aggressiveness: 0
+    friendliness: 0
+    excitement: 0
+    cowardice: 0
+    melancholy: 0
   lightRig: {fileID: 698434351}
   oscMode: 1
   msgMode: 0
@@ -6556,7 +6577,6 @@ MonoBehaviour:
   outPort: 9999
   inPort: 9000
   rxBufferSize: 1024000
-  bciVal: []
 --- !u!4 &1743049713
 Transform:
   m_ObjectHideFlags: 0
