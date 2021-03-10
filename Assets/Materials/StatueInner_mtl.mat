@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: StatueInner_mtl
-  m_Shader: {fileID: 4800000, guid: 0c05dbfd27d316c4d9a38c7b714b9547, type: 3}
+  m_Shader: {fileID: 4800000, guid: 3d6a598383592cf4ea1dbe9d0e1d548a, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 1
@@ -71,6 +71,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _Height: 0.148
     - _Metallic: 0.084
     - _Mode: 0
     - _OcclusionStrength: 1

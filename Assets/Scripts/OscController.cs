@@ -140,6 +140,8 @@ public class OscController : MonoBehaviour {
                 break;
         }
 
+        Debug.Log(newData);
+
         switch (newAddress) {
             case "/module/1/active":
                 ecgData.active = (int) newData[0];
