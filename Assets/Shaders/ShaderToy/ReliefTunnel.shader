@@ -3,6 +3,7 @@
 Shader "ShaderToy/ReliefTunnel" {
 	
 	Properties {
+        _Intensity("Intensity", Range(1, 100)) = 1
 		_Color("Color", Color) = (1,.5,.5,1)
 		_MainTex("Texture", 2D) = "white" {}
 	}
@@ -36,6 +37,7 @@ Shader "ShaderToy/ReliefTunnel" {
 				return o;
 			}
 
+            float _Intensity;
 			float4 _Color;
 			sampler2D _MainTex;
 
@@ -60,7 +62,8 @@ Shader "ShaderToy/ReliefTunnel" {
 				ao = smoothstep(0.0, 0.4, ao) - smoothstep(0.4, 0.7, ao);
 				ao = 1.0 - 0.5*ao*r;
 
-				return float4(col*w*ao, 1.0) * _Color;
+				float4 finalCol = float4(col*w*ao, 1.0) * _Color;
+                return finalCol * _Intensity;
 			}
 
 			ENDCG
