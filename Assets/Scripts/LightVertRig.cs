@@ -48,7 +48,7 @@ public class LightVertRig : MonoBehaviour {
             for (int j = 0; j < lastPoint; j++) {
                 int loc = i + j;
                 newIndices[j] = loc;
-                points[loc] = new LightPoint(vertices[loc], defaultColor, 1f);
+                points[loc] = new LightPoint(vertices[loc], Vector2.zero, defaultColor, 1f); // uvs not used
             }
 
             LightGroup newGroup = GameObject.Instantiate(groupPrefab).GetComponent<LightGroup>();

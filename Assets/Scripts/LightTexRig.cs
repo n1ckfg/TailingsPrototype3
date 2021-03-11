@@ -19,16 +19,22 @@ public class LightTexRig : MonoBehaviour {
     public bool ready = false;
     public Color defaultColor;
 
+    private Texture2D tex;
     private Vector3[] vertices;
+    private Vector2[] uvs;
+    private Rect rectTex;
 
     private IEnumerator Start() {
+        createTexFromRtex();
+
         ledScale = Mathf.Clamp(ledScale, 1f, 255f);
 
         groups = new List<LightGroup>();
 
         vertices = meshFilter.mesh.vertices;
-        Debug.Log("Light rig target mesh has " + vertices.Length + " vertices.");
+        uvs = meshFilter.mesh.uv;
         points = new LightPoint[vertices.Length];
+        Debug.Log("Light rig target mesh has " + vertices.Length + " vertices.");
 
         for (int i = 0; i < vertices.Length; i += pointBatch) {
             int lastPoint = pointBatch;
@@ -38,7 +44,7 @@ public class LightTexRig : MonoBehaviour {
             for (int j = 0; j < lastPoint; j++) {
                 int loc = i + j;
                 newIndices[j] = loc;
-                points[loc] = new LightPoint(vertices[loc], defaultColor, 1f);
+                points[loc] = new LightPoint(vertices[loc], uvs[loc], defaultColor, 1f);
             }
 
             LightGroup newGroup = GameObject.Instantiate(groupPrefab).GetComponent<LightGroup>();
@@ -57,6 +63,8 @@ public class LightTexRig : MonoBehaviour {
 
     private IEnumerator updateValues() {
         while (true) {
+            getLightsFromTexture();
+
             for (int i = 0; i < groups.Count; i++) {
                 setGroupColor(groups[i]);
                 setGroupBrightness(groups[i]);
@@ -88,5 +96,28 @@ public class LightTexRig : MonoBehaviour {
 
         group.avgBrightness = avgBrightness / group.indices.Length;
     }
-    
-}
+
+    public void getLightsFromTexture() {
+        if (ready) {
+            updateTexFromRtex();
+            for (int i = 0; i < points.Length; i ++) {
+                Color col = tex.GetPixelBilinear(points[i].uv.x, points[i].uv.y) * ledScale;
+                points[i].color = col; // Color.Lerp(points[i].color, col, ledLerpSpeed);
+            }
+        }
+    }
+
+    public void createTexFromRtex() {
+        rectTex = new Rect(0, 0, rTex.width, rTex.height);
+        tex = new Texture2D(rTex.width, rTex.height, TextureFormat.RGB24, false);
+        updateTexFromRtex();
+    }
+
+    public void updateTexFromRtex() {
+        RenderTexture.active = rTex;
+        tex.ReadPixels(rectTex, 0, 0);
+        tex.Apply();
+        RenderTexture.active = null;
+    }
+
+ }
