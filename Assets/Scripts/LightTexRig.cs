@@ -16,6 +16,7 @@ public class LightTexRig : MonoBehaviour {
     public float ledLerpSpeed = 0.5f;
     public float ledScale = 1f;
     public int pointBatch = 10;
+    public int sampleSkip = 1;
     public bool ready = false;
     public Color defaultColor;
 
@@ -81,7 +82,7 @@ public class LightTexRig : MonoBehaviour {
 
     public void setGroupColor(LightGroup group) {
         Color avgColor = Color.black;
-        for (int i = 0; i < group.indices.Length; i++) {
+        for (int i = 0; i < group.indices.Length; i += sampleSkip) {
             avgColor += points[group.indices[i]].color;
         }
         
@@ -90,7 +91,7 @@ public class LightTexRig : MonoBehaviour {
 
     public void setGroupBrightness(LightGroup group) {
         float avgBrightness = 0f;
-        for (int i = 0; i < group.indices.Length; i++) {
+        for (int i = 0; i < group.indices.Length; i += sampleSkip) {
             avgBrightness += points[group.indices[i]].brightness;
         }
 
@@ -100,7 +101,7 @@ public class LightTexRig : MonoBehaviour {
     public void getLightsFromTexture() {
         if (ready) {
             updateTexFromRtex();
-            for (int i = 0; i < points.Length; i ++) {
+            for (int i = 0; i < points.Length; i += sampleSkip) {
                 Color col = tex.GetPixelBilinear(points[i].uv.x, points[i].uv.y) * ledScale;
                 points[i].color = col; // Color.Lerp(points[i].color, col, ledLerpSpeed);
             }

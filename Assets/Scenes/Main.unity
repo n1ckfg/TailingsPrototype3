@@ -1187,8 +1187,9 @@ MonoBehaviour:
   groups: []
   ledUpdateInterval: 0.1
   ledLerpSpeed: 0.8
-  ledScale: 2
+  ledScale: 10
   pointBatch: 400
+  sampleSkip: 2
   ready: 0
   defaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &750737579
