@@ -8,6 +8,9 @@ public class Spawner : MonoBehaviour {
     public GameObject prefab;
     public int numObj = 10;
     public float range = 5f;
+    public float scaleBpm = 1f;
+    public float scaleResp = 1f;
+    public float scaleDir = 10f;
 
     [HideInInspector] public FIMSpace.Basics.FBasic_FlyMovement[] flightControls;
 
@@ -26,20 +29,20 @@ public class Spawner : MonoBehaviour {
 	private void Update() {
 		for (int i=0; i<flightControls.Length; i++) {
             // How fast the model flies on its trajectory
-            flightControls[i].MainSpeed = 2f;// oscController.ecgData.bpm; // default 1f; 
+            flightControls[i].MainSpeed = oscController.ecgData.bpm.x * scaleBpm; // default 1f; 
 
             // How far the object flies
             flightControls[i].RangeValue = Vector3.one; // default Vector3.one;
 
             // Multiplier for range value, applied to all axes
-            flightControls[i].RangeMul = 10f; // oscController.ecgData.ecgCooked; // default 5f; 
+            flightControls[i].RangeMul = oscController.ecgData.r2r.x * range; // default 5f; 
 
             // Additional translation on y axis if you want movement to be like butterfly flight
-            flightControls[i].AddYSin = 1f; // oscController.ecgData.resp;// default 1f;
-            flightControls[i].AddYSinTimeSpeed = 1f;// oscController.ecgData.respRate; // default 1f;
+            flightControls[i].AddYSin = oscController.ecgData.resp.x * scaleResp;// default 1f;
+            flightControls[i].AddYSinTimeSpeed = oscController.ecgData.respRate.x * scaleResp; // default 1f;
 
             // How fast model should rotate to its forward movement direction
-            flightControls[i].RotateForwardSpeed = 10f;// oscController.ecgData.r2r; // default 10f; 
+            flightControls[i].RotateForwardSpeed = oscController.ecgData.ecgCooked.x * scaleDir; // default 10f; 
 
         }
 	}

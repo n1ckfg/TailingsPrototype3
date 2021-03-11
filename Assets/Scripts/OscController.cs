@@ -9,30 +9,30 @@ using UnityOSC;
 
 public class OscController : MonoBehaviour {
 
-	[Serializable]
-	public struct EcgData {
+    [Serializable]
+    public struct EcgData {
         public int active;
-        public float ecgRaw;
-        public float ecgCooked;
-        public float bpm;
-        public float r2r;
-        public float resp;
-        public float respRate;
-	}
+        public Vector3 ecgRaw;
+        public Vector3 ecgCooked;
+        public Vector3 bpm;
+        public Vector3 r2r;
+        public Vector3 resp;
+        public Vector3 respRate;
+    }
 
-	[Serializable]
-	public struct EmoData {
-        public float delight;
-        public float desire;
-        public float sadness;
-        public float fear;
-        public float ambivalence;
-        public float aggressiveness;
-        public float friendliness;
-        public float excitement;
-        public float cowardice;
-        public float melancholy;
-	}
+    [Serializable]
+    public struct EmoData {
+        public Vector3 delight;
+        public Vector3 desire;
+        public Vector3 sadness;
+        public Vector3 fear;
+        public Vector3 ambivalence;
+        public Vector3 aggressiveness;
+        public Vector3 friendliness;
+        public Vector3 excitement;
+        public Vector3 cowardice;
+        public Vector3 melancholy;
+    }
 
     public EcgData ecgData;
     public EmoData emoData;
@@ -98,27 +98,41 @@ public class OscController : MonoBehaviour {
         }
     }
 
-	private void initStructs() {
+    private void initStructs() {
         ecgData = new EcgData();
         ecgData.active = 0;
-        ecgData.ecgRaw = 0f;
-        ecgData.ecgCooked = 0f;
-        ecgData.bpm = 0f;
-        ecgData.r2r = 0f;
-        ecgData.resp = 0f;
-        ecgData.respRate = 0f;
+        ecgData.ecgRaw = Vector3.zero;
+        ecgData.ecgCooked = Vector3.zero;
+        ecgData.bpm = Vector3.zero;
+        ecgData.r2r = Vector3.zero;
+        ecgData.resp = Vector3.zero;
+        ecgData.respRate = Vector3.zero;
 
         emoData = new EmoData();
-        emoData.delight = 0f;
-        emoData.desire = 0f;
-        emoData.sadness = 0f;
-        emoData.fear = 0f;
-        emoData.ambivalence = 0f;
-        emoData.aggressiveness = 0f;
-        emoData.friendliness = 0f;
-        emoData.excitement = 0f;
-        emoData.cowardice = 0f;
-        emoData.melancholy = 0f;
+        emoData.delight = Vector3.zero;
+        emoData.desire = Vector3.zero;
+        emoData.sadness = Vector3.zero;
+        emoData.fear = Vector3.zero;
+        emoData.ambivalence = Vector3.zero;
+        emoData.aggressiveness = Vector3.zero;
+        emoData.friendliness = Vector3.zero;
+        emoData.excitement = Vector3.zero;
+        emoData.cowardice = Vector3.zero;
+        emoData.melancholy = Vector3.zero;
+
+        //StartCoroutine(checkMinMax());
+    }
+
+    private IEnumerator checkMinMax() {
+        while (true) {
+            Debug.Log(printMinMax("ecgRaw", ecgData.ecgRaw) + printMinMax("ecgCooked", ecgData.ecgCooked) + printMinMax("bpm", ecgData.bpm) + printMinMax("r2r", ecgData.r2r) + printMinMax("resp", ecgData.resp) + printMinMax("respRate", ecgData.respRate));
+
+            yield return new WaitForSeconds(3f);
+        }
+    }
+
+    string printMinMax(string name, Vector3 input) {
+        return " " + name + " (" + input.y + ", " + input.z + ")";
     }
 
     // Process OSC message
@@ -144,37 +158,37 @@ public class OscController : MonoBehaviour {
 
         switch (newAddress) {
             case "/module/1/active":
-                ecgData.active = (int) newData[0];
+                ecgData.active = (int)newData[0];
                 break;
             case "/module/1/ecgRaw":
-                ecgData.ecgRaw = (float) newData[0];
+                setMinMax(ref ecgData.ecgRaw, (float)newData[0]);
                 break;
             case "/module/1/ecgCooked":
-                ecgData.ecgCooked = (float) newData[0];
+                setMinMax(ref ecgData.ecgCooked, (float)newData[0]);
                 break;
             case "/module/1/bpm":
-                ecgData.bpm = (float) newData[0];
+                setMinMax(ref ecgData.bpm, (float)newData[0]);
                 break;
             case "/module/1/r2r":
-                ecgData.r2r = (float) newData[0];
+                setMinMax(ref ecgData.r2r, (float)newData[0]);
                 break;
             case "/module/1/resp":
-                ecgData.resp = (float) newData[0];
+                setMinMax(ref ecgData.resp, (float)newData[0]);
                 break;
             case "/module/1/respRate":
-                ecgData.respRate = (float) newData[0];
+                setMinMax(ref ecgData.respRate, (float)newData[0]);
                 break;
             case "/emotions":
-                emoData.delight = (float) newData[0];
-                emoData.desire = (float) newData[1];
-                emoData.sadness = (float) newData[2];
-                emoData.fear = (float) newData[3];
-                emoData.ambivalence = (float) newData[4];
-                emoData.aggressiveness = (float) newData[5];
-                emoData.friendliness = (float) newData[6];
-                emoData.excitement = (float) newData[7];
-                emoData.cowardice = (float) newData[8];
-                emoData.melancholy = (float) newData[9];
+                setMinMax(ref emoData.delight, (float)newData[0]);
+                setMinMax(ref emoData.desire, (float)newData[1]);
+                setMinMax(ref emoData.sadness, (float)newData[2]);
+                setMinMax(ref emoData.fear, (float)newData[3]);
+                setMinMax(ref emoData.ambivalence, (float)newData[4]);
+                setMinMax(ref emoData.aggressiveness, (float)newData[5]);
+                setMinMax(ref emoData.friendliness, (float)newData[6]);
+                setMinMax(ref emoData.excitement, (float)newData[7]);
+                setMinMax(ref emoData.cowardice, (float)newData[8]);
+                setMinMax(ref emoData.melancholy, (float)newData[9]);
                 break;
             case "/simled":
                 if (lightRig.ready) {
@@ -194,6 +208,11 @@ public class OscController : MonoBehaviour {
         }
     }
 
-
+    void setMinMax(ref Vector3 result, float input) {
+        result.x = input;
+        if (result.y < input) result.y = input;
+        if (result.z > input) result.z = input;
+        result = result.normalized;
+    }
 
 }
