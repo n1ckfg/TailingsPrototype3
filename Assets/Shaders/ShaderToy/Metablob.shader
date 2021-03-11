@@ -2,19 +2,21 @@
 
 Shader "ShaderToy/Metablob" {
 	
-	Properties {
-		//
+	Properties{
+		_Color("Color", Color) = (1,1,1,1)
 	}
 
-	SubShader {
+	SubShader{
 
 		Pass {
 			CGPROGRAM
-			
+
 			#pragma vertex vert
 			#pragma fragment frag
-			
+
 			#include "UnityCG.cginc"
+
+			float4 _Color;
 
 			struct appdata {
 				float4 vertex : POSITION;
@@ -57,7 +59,7 @@ Shader "ShaderToy/Metablob" {
 				float col = pow(metaball,8.0);
 				
 				//set the output color
-				return float4(col,col,col,1.0);
+				return float4(col,col,col,1.0) * _Color;
 			}
 			ENDCG
 		}

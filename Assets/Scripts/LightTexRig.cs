@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class LightTexRig : MonoBehaviour {
 
+    public RenderTexture rTex;
     public OscController oscController;
     public MeshFilter meshFilter;
     public GameObject groupPrefab;
@@ -19,7 +20,6 @@ public class LightTexRig : MonoBehaviour {
     public Color defaultColor;
 
     private Vector3[] vertices;
-    private Color[] cols;
 
     private IEnumerator Start() {
         ledScale = Mathf.Clamp(ledScale, 1f, 255f);
@@ -29,14 +29,6 @@ public class LightTexRig : MonoBehaviour {
         vertices = meshFilter.mesh.vertices;
         Debug.Log("Light rig target mesh has " + vertices.Length + " vertices.");
         points = new LightPoint[vertices.Length];
-
-        cols = new Color[vertices.Length];
-
-        for (int i = 0; i < vertices.Length; i++) {
-            cols[i] = defaultColor;
-        }
-
-        meshFilter.mesh.colors = cols;
 
         for (int i = 0; i < vertices.Length; i += pointBatch) {
             int lastPoint = pointBatch;
@@ -65,14 +57,10 @@ public class LightTexRig : MonoBehaviour {
 
     private IEnumerator updateValues() {
         while (true) {
-            getLightsFromOsc();
-
             for (int i = 0; i < groups.Count; i++) {
                 setGroupColor(groups[i]);
                 setGroupBrightness(groups[i]);
             }
-
-            setAllCols();
 
             yield return new WaitForSeconds(ledUpdateInterval);
         }
@@ -101,27 +89,4 @@ public class LightTexRig : MonoBehaviour {
         group.avgBrightness = avgBrightness / group.indices.Length;
     }
     
-    public void setAllCols() {
-        for (int i=0; i<points.Length; i++) {
-            cols[i] = points[i].color;
-        }
-
-        meshFilter.mesh.colors = cols;       
-    }
-
-    public void getLightsFromOsc() {
-        if (ready) {
-            List<Color> colors = new List<Color>();
-            byte[] newBytes = oscController.lightBytes;
-            for (int i = 0; i < newBytes.Length; i += 3) {
-                Vector3 col = new Vector3(newBytes[i], newBytes[i + 1], newBytes[i + 2]) / (255f / ledScale);
-                colors.Add(new Color(col.x, col.y, col.z));
-            }
-
-            Debug.Log("Received " + colors.Count + " colors.");
-            for (int i = 0; i < colors.Count; i++) {
-                points[i].color = Color.Lerp(points[i].color, colors[i], ledLerpSpeed);
-            }
-        }
-    }
 }

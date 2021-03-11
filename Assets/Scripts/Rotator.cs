@@ -6,10 +6,6 @@ public class Rotator : MonoBehaviour {
 
     public Vector3 rot = Vector3.zero;
 
-    private void Start() {
-        rot.x = 1f;
-    }
-
     private void Update() {
         transform.Rotate(rot);
     }
