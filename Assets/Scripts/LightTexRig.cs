@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// https://gamedev.stackexchange.com/questions/98632/drawing-a-pixel-to-rendertexture
-// https://forum.unity.com/threads/best-easiest-way-to-change-color-of-certain-pixels-in-a-single-sprite.223030/
-// https://docs.unity3d.com/ScriptReference/Texture2D.SetPixels.html
+// https://docs.unity3d.com/ScriptReference/Texture2D.GetPixelBilinear.html
 
-public class LightRig : MonoBehaviour {
+public class LightTexRig : MonoBehaviour {
 
+    public OscController oscController;
     public MeshFilter meshFilter;
     public GameObject groupPrefab;
     public LightPoint[] points;
@@ -66,6 +65,8 @@ public class LightRig : MonoBehaviour {
 
     private IEnumerator updateValues() {
         while (true) {
+            getLightsFromOsc();
+
             for (int i = 0; i < groups.Count; i++) {
                 setGroupColor(groups[i]);
                 setGroupBrightness(groups[i]);
@@ -108,4 +109,19 @@ public class LightRig : MonoBehaviour {
         meshFilter.mesh.colors = cols;       
     }
 
+    public void getLightsFromOsc() {
+        if (ready) {
+            List<Color> colors = new List<Color>();
+            byte[] newBytes = oscController.lightBytes;
+            for (int i = 0; i < newBytes.Length; i += 3) {
+                Vector3 col = new Vector3(newBytes[i], newBytes[i + 1], newBytes[i + 2]) / (255f / ledScale);
+                colors.Add(new Color(col.x, col.y, col.z));
+            }
+
+            Debug.Log("Received " + colors.Count + " colors.");
+            for (int i = 0; i < colors.Count; i++) {
+                points[i].color = Color.Lerp(points[i].color, colors[i], ledLerpSpeed);
+            }
+        }
+    }
 }

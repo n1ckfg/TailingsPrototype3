@@ -34,9 +34,9 @@ public class OscController : MonoBehaviour {
         public Vector3 melancholy;
     }
 
+    [HideInInspector] public byte[] lightBytes;
     public EcgData ecgData;
     public EmoData emoData;
-    public LightRig lightRig;
 
     public enum OscMode { SEND, RECEIVE, SEND_RECEIVE };
     public OscMode oscMode = OscMode.RECEIVE;
@@ -154,7 +154,7 @@ public class OscController : MonoBehaviour {
                 break;
         }
 
-        Debug.Log(newData);
+        //Debug.Log(newData);
 
         switch (newAddress) {
             case "/module/1/active":
@@ -191,19 +191,7 @@ public class OscController : MonoBehaviour {
                 setMinMax(ref emoData.melancholy, (float)newData[9]);
                 break;
             case "/simled":
-                if (lightRig.ready) {
-                    List<Color> colors = new List<Color>();
-                    byte[] newBytes = (byte[]) newData[0];
-                    for (int i = 0; i < newBytes.Length; i += 3) {
-                        Vector3 col = new Vector3(newBytes[i], newBytes[i+1], newBytes[i+2]) / (255f / lightRig.ledScale);
-                        colors.Add(new Color(col.x, col.y, col.z));
-                    }
-
-                    Debug.Log("Received " + colors.Count + " colors.");
-                    for (int i = 0; i < colors.Count; i++) {
-                        lightRig.points[i].color = Color.Lerp(lightRig.points[i].color, colors[i], lightRig.ledLerpSpeed);
-                    }
-                }
+                lightBytes = (byte[]) newData[0];
                 break;
         }
     }

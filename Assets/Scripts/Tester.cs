@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tester : MonoBehaviour {
 
-    public LightRig lightRig;
+    public LightVertRig lightRig;
     public float updateInterval = 2f;
     public Color col;
 

@@ -636,6 +636,9 @@ MonoBehaviour:
   prefab: {fileID: 8691791965694728253, guid: 3dbadf4eba1b39340a5b7fba60a7e2a4, type: 3}
   numObj: 10
   range: 10
+  scaleBpm: 1
+  scaleResp: 1
+  scaleDir: 10
   flightControls: []
 --- !u!4 &606473643
 Transform:
@@ -1047,6 +1050,7 @@ GameObject:
   m_Component:
   - component: {fileID: 698434352}
   - component: {fileID: 698434351}
+  - component: {fileID: 698434353}
   m_Layer: 0
   m_Name: LIGHT_RIG
   m_TagString: Untagged
@@ -1061,18 +1065,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698434350}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02bafc96daced6f4e9604eb5e8666e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oscController: {fileID: 1743049712}
   meshFilter: {fileID: 567316020}
   groupPrefab: {fileID: 3166619525214049967, guid: f020c31efd0263c4082ae4945ed4a7dc,
     type: 3}
   groups: []
   ledUpdateInterval: 0.1
   ledLerpSpeed: 0.8
-  ledScale: 4
+  ledScale: 2
   pointBatch: 400
   ready: 0
   defaultColor: {r: 1, g: 0, b: 0, a: 0}
@@ -1090,6 +1095,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &698434353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698434350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7927ff6d7c66ad4bb0c4d3978830d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oscController: {fileID: 1743049712}
+  meshFilter: {fileID: 567316020}
+  groupPrefab: {fileID: 3166619525214049967, guid: f020c31efd0263c4082ae4945ed4a7dc,
+    type: 3}
+  groups: []
+  ledUpdateInterval: 0.1
+  ledLerpSpeed: 0.8
+  ledScale: 2
+  pointBatch: 400
+  ready: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &750737579
 GameObject:
   m_ObjectHideFlags: 0
@@ -6831,7 +6859,7 @@ MeshCollider:
   m_GameObject: {fileID: 1631870584}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -7411,26 +7439,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d35f81f91494c43bfbe02531396a2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightBytes: 
   ecgData:
     active: 0
-    ecgRaw: 0
-    ecgCooked: 0
-    bpm: 0
-    r2r: 0
-    resp: 0
-    respRate: 0
+    ecgRaw: {x: 0, y: 0, z: 0}
+    ecgCooked: {x: 0, y: 0, z: 0}
+    bpm: {x: 0, y: 0, z: 0}
+    r2r: {x: 0, y: 0, z: 0}
+    resp: {x: 0, y: 0, z: 0}
+    respRate: {x: 0, y: 0, z: 0}
   emoData:
-    delight: 0
-    desire: 0
-    sadness: 0
-    fear: 0
-    ambivalence: 0
-    aggressiveness: 0
-    friendliness: 0
-    excitement: 0
-    cowardice: 0
-    melancholy: 0
-  lightRig: {fileID: 698434351}
+    delight: {x: 0, y: 0, z: 0}
+    desire: {x: 0, y: 0, z: 0}
+    sadness: {x: 0, y: 0, z: 0}
+    fear: {x: 0, y: 0, z: 0}
+    ambivalence: {x: 0, y: 0, z: 0}
+    aggressiveness: {x: 0, y: 0, z: 0}
+    friendliness: {x: 0, y: 0, z: 0}
+    excitement: {x: 0, y: 0, z: 0}
+    cowardice: {x: 0, y: 0, z: 0}
+    melancholy: {x: 0, y: 0, z: 0}
   oscMode: 1
   msgMode: 0
   outIP: 127.0.0.1
