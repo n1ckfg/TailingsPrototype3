@@ -53,13 +53,13 @@ Shader "Nick/VertexColor_Normal_Height" {
 			 fixed4 Occ = tex2D(_OcclusionTex, IN.uv_MainTex);
 			 
 			 half h = _Height + (_SinTime[1]/10);
-			 if (IN.vertex.y > h / 100) {
-				 o.Albedo = IN.vertexColor * Occ; // Combine normal color with the vertex color
-				 o.Emission = -Occ;
-			 } else {
+			 //if (IN.vertex.y > h / 100) {
+				 //o.Albedo = IN.vertexColor * Occ; // Combine normal color with the vertex color
+				 //o.Emission = -Occ;
+			 //} else {
 				 o.Albedo = c.rgb * IN.vertexColor * Occ;
 				 o.Emission = c.rgb * IN.vertexColor;
-			 }
+			 //}
 
 			 o.Normal = UnpackNormal(tex2D(_NormTex, IN.uv_MainTex));
 			 // Metallic and smoothness come from slider variables
