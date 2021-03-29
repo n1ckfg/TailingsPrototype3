@@ -7,6 +7,13 @@
     "email": "nick@fox-gieg.com",
     "url": "https://fox-gieg.com"
   },
+  "contributors": [
+    {
+      "name": "Ivaylo Getov",
+      "email": "contact@ivaylogetov.com",
+      "url": "https://ivaylogetov.com"
+    }
+  ],  
   "homepage": "https://fox-gieg.com",
   "engines": {
     "node": ">= 0.6.0",

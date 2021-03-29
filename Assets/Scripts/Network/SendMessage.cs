@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class SendPosition : MonoBehaviour {
+public class SendMessage : MonoBehaviour {
 
 	///////////////////////////////////////////////////////////////////////
 	// This class will broadcast the Transform data of a single User/Player.
@@ -38,10 +38,10 @@ public class SendPosition : MonoBehaviour {
 
 		if (rateLimit) {
 			if (Time.frameCount % limitFactor == 0) {
-				netManager.SendPosData(JsonHelpers.ConvertUserPosToJSON(uniqueID, headTransform, leftHandTransform, rightHandTransform));
+				netManager.SendPosData(NetworkUtil.ConvertUserPosToJSON(uniqueID, headTransform, leftHandTransform, rightHandTransform));
 			}
 		} else {
-			netManager.SendPosData(JsonHelpers.ConvertUserPosToJSON(uniqueID, headTransform, leftHandTransform, rightHandTransform));
+			netManager.SendPosData(NetworkUtil.ConvertUserPosToJSON(uniqueID, headTransform, leftHandTransform, rightHandTransform));
 		}
 	}
 

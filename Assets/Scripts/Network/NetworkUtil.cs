@@ -1,49 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-///////////////////////////////////////////////////////////////////////
-// This file defines the Serializable data types that we're sending
-// back and forth to the server, as well as a class 'JsonHelpers' with
-// static methods to abstract the object/JSON conversion.
-////////////////////////////////////////////////////////////////////////
-
-// Holds the data of a single Unity GameObject.Transform, plus an id
-[System.Serializable]
-public struct SinglePosition {
-	public int id;
-	public float posX;
-	public float posY;
-	public float posZ;
-	public float rotX;
-	public float rotY;
-	public float rotZ;
-	public float rotW;
-}
-
-// I made this struct to hold the information of one "Player" consisting
-// of a userID and a List (which becomes Array in JSON) of Transforms
-[System.Serializable]
-public struct UserPosition {
-	public int userID;
-	public List<SinglePosition> positions;
-}
-
-// This is needed to properly parse the incoming JSON with multiple
-// UserPositions from the server
-[System.Serializable]
-public struct IncomingPositions {
-	public List<UserPosition> userPosList;
-}
-
-[System.Serializable]
-public struct TriggerData {
-	public int playerId;
-	public int cueId;
-	public bool status;
-}
-
-// Defines a static class to abstract object/JSON conversion
-public static class JsonHelpers {
+// Handles object/JSON conversion
+public static class NetworkUtil {
 
 	public static SinglePosition ConvertToSinglePosObj(int id, Transform trans) {
 		SinglePosition singlePos;
@@ -94,4 +53,5 @@ public static class JsonHelpers {
 		TriggerData td = JsonUtility.FromJson<TriggerData>(json);
 		return td;
 	}
+
 }

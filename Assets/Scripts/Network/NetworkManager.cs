@@ -17,9 +17,9 @@ public class NetworkManager : MonoBehaviour {
 	public string localSeverPort = "8008";
 
 	// Point this to wherever you've got the ReceivePositions script.
-	public ReceivePositions[] positionReceiver;
+	public ReceiveMessage[] positionReceiver;
 
-	public ReceiveTriggers triggerReceiver;
+	public ReceiveMessage triggerReceiver;
 
 	// Enable/disable debugging
 	public bool showDebug = true;
@@ -125,7 +125,7 @@ public class NetworkManager : MonoBehaviour {
 				// Just an example. Work your own magic here :-D
 				//Debug.Log("Got Trigger from: " + ParseTriggerSource(jsonString) );
 				//Debug.Log(jsonString);
-				triggerReceiver.ProcessTrigger(jsonString);
+				//triggerReceiver.ProcessTrigger(jsonString);
 				break;
 		}
 	}

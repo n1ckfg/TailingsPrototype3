@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReceivePositions : MonoBehaviour {
+public class ReceiveMessage : MonoBehaviour {
 
     ///////////////////////////////////////////////////////////////////////
     // This is built in a totally non-scalable way, to make it
@@ -76,7 +76,7 @@ public class ReceivePositions : MonoBehaviour {
 
     // This is called from the network manager
     public void UpdatePositionsFromJson(string json) {
-        List<UserPosition> positions = JsonHelpers.JSONToUserPosList(json);
+        List<UserPosition> positions = NetworkUtil.JSONToUserPosList(json);
 
         // Don't do anything if you're receiving empty data.
         if (positions.Count == 0) {
