@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: StatueLed_mtl
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 5d1c633aff26623499b70197aa0cf25b, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 1
@@ -74,13 +74,13 @@ Material:
     m_Floats:
     - _Brightness: 2.5
     - _BumpScale: 1
-    - _Cutoff: 0.5
+    - _Cutoff: 0.007
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.652
     - _GlossyReflections: 1
-    - _Height: 0
+    - _Height: 0.00019
     - _Metallic: 0.825
     - _Mode: 0
     - _OcclusionStrength: 1
