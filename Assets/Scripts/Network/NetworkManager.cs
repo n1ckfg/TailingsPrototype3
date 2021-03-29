@@ -13,8 +13,7 @@ public class NetworkManager : MonoBehaviour {
 	public int uniqueID;
 
 	// Set the local network address and port of the server
-	public string localServerAddress = "localhost";
-	public string localSeverPort = "8008";
+	public string serverAddress = "localhost";
 
 	// Point this to wherever you've got the ReceivePositions script.
 	public ReceiveMessage[] positionReceiver;
@@ -26,7 +25,7 @@ public class NetworkManager : MonoBehaviour {
 
 	// Configure socket.io
 	SocketManager socketManager;
-	private string socketAddr;
+	private string socketAddress;
 	private bool connectedToServer = false;
 
 	public bool getNetStatus() {
@@ -34,8 +33,9 @@ public class NetworkManager : MonoBehaviour {
 	}
 
     private void Start () {
-		socketAddr = "http://" + localServerAddress + ":" + localSeverPort + "/socket.io/:8443";
-		initSocketManager(socketAddr);
+        socketAddress = "ws://" + serverAddress + "/socket.io/";
+
+        initSocketManager(socketAddress);
 	}
 
 	private void initSocketManager(string uri) {

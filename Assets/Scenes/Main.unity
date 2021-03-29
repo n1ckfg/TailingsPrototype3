@@ -1376,11 +1376,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59ae4f317f9b4f8b8d64f71768aaea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sourceTexture: {fileID: 0}
-  _alphaSupport: 0
-  _serverTexture: {fileID: 0}
-  _blitMaterial: {fileID: 0}
-  _hasCamera: 0
 --- !u!4 &752357233 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 500582586563796837, guid: bc69c326994861a4e831511abccb78c7,
@@ -6182,9 +6177,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa4162867a444f65b2ac6ced6227470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 0
-  localServerAddress: 127.0.0.1
-  localSeverPort: 8008
+  uniqueID: 11
+  serverAddress: verticalstudio.glitch.me
+  serverPort: 8080
   positionReceiver: []
   triggerReceiver: {fileID: 0}
   showDebug: 1
