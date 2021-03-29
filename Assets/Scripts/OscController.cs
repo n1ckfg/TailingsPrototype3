@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using UnityOSC;
+//using UnityOSC;
 
 public class OscController : MonoBehaviour {
 
@@ -47,7 +47,7 @@ public class OscController : MonoBehaviour {
     public int inPort = 9998;
     public int rxBufferSize = 1024000;//1024;
 
-    private OSCServer myServer;
+    //private OSCServer myServer;
     private int bufferSize = 100; // Buffer size of the application (stores 100 messages from different servers)
     private int sleepMs = 10;
 
@@ -57,20 +57,20 @@ public class OscController : MonoBehaviour {
     // Script initialization
     void Start() {
         // init OSC
-        OSCHandler.Instance.Init();
+       // OSCHandler.Instance.Init();
 
         // Initialize OSC clients (transmitters)
         if (oscMode == OscMode.SEND || oscMode == OscMode.SEND_RECEIVE) {
-            OSCHandler.Instance.CreateClient("myClient", IPAddress.Parse(outIP), outPort);
+            //OSCHandler.Instance.CreateClient("myClient", IPAddress.Parse(outIP), outPort);
         }
 
         if (oscMode == OscMode.RECEIVE || oscMode == OscMode.SEND_RECEIVE) {
             // Initialize OSC servers (listeners)
-            myServer = OSCHandler.Instance.CreateServer("myServer", inPort);
+            //myServer = OSCHandler.Instance.CreateServer("myServer", inPort);
             // Set buffer size (bytes) of the server (default 1024)
-            myServer.ReceiveBufferSize = rxBufferSize;
+            //myServer.ReceiveBufferSize = rxBufferSize;
             // Set the sleeping time of the thread (default 10)
-            myServer.SleepMilliseconds = sleepMs;
+            //myServer.SleepMilliseconds = sleepMs;
         }
 
         newData = new List<object>();
@@ -82,19 +82,19 @@ public class OscController : MonoBehaviour {
     void Update() {
         if (oscMode == OscMode.RECEIVE || oscMode == OscMode.SEND_RECEIVE) {
             // Read received messages
-            for (var i = 0; i < OSCHandler.Instance.packets.Count; i++) {
+            //for (var i = 0; i < OSCHandler.Instance.packets.Count; i++) {
                 // Process OSC
-                receivedOSC(OSCHandler.Instance.packets[i]);
+                //receivedOSC(OSCHandler.Instance.packets[i]);
                 // Remove them once they have been read.
-                OSCHandler.Instance.packets.Remove(OSCHandler.Instance.packets[i]);
-                i--;
-            }
+                //OSCHandler.Instance.packets.Remove(OSCHandler.Instance.packets[i]);
+                //i--;
+            //}
         }
 
         // Send random number to the client
         if (oscMode == OscMode.SEND || oscMode == OscMode.SEND_RECEIVE) {
             float randVal = UnityEngine.Random.Range(0f, 0.7f);
-            OSCHandler.Instance.SendMessageToClient("myClient", "/1/fader1", randVal);
+            //OSCHandler.Instance.SendMessageToClient("myClient", "/1/fader1", randVal);
         }
     }
 
@@ -136,6 +136,7 @@ public class OscController : MonoBehaviour {
     }
 
     // Process OSC message
+    /*
     private void receivedOSC(OSCPacket pckt) {
         if (pckt == null) {
             Debug.Log("Empty packet");
@@ -195,6 +196,7 @@ public class OscController : MonoBehaviour {
                 break;
         }
     }
+    */
 
     void setMinMax(ref Vector3 result, float input) {
         result.x = input;

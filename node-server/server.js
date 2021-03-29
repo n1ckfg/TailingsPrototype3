@@ -117,7 +117,7 @@ if (env === "production") {
 // let ipaddress = process.env.OPENSHIFT_NODEJS_IP || "Escape-Pod.local"; //use to be visible on network
 // let ipaddress = process.env.OPENSHIFT_NODEJS_IP || "10.0.10.12"; //use to be visible on network
 let ipaddress = process.env.ARSYNC_IP || "0.0.0.0";
-let port			= process.env.ARSYNC_PORT || 8008;
+let port = process.env.ARSYNC_PORT || 8008;
 
 if (typeof ipaddress !== process.env.ARSYNC_IP) {
 	// Log errors on OpenShift but continue w/ 127.0.0.1 - this
