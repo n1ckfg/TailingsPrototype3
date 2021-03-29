@@ -33,7 +33,7 @@ public class NetworkManager : MonoBehaviour {
 	}
 
     private void Start () {
-        socketAddress = "ws://" + serverAddress + "/socket.io/";
+        socketAddress = "https://" + serverAddress + "/socket.io/";
 
         initSocketManager(socketAddress);
 	}
