@@ -46,7 +46,7 @@ public class NetworkManager : MonoBehaviour {
 		socketManager.Socket.On("reconnect", SocketConnected);
 
 		// If you define new socket routes, make sure to register them here:
-		socketManager.Socket.On("objectPositions", ReceivedLocalSocketMessage);
+		socketManager.Socket.On("broadcast", ReceivedLocalSocketMessage);
 		socketManager.Socket.On("trigger", ReceivedLocalSocketMessage);
 	}
 
@@ -114,11 +114,12 @@ public class NetworkManager : MonoBehaviour {
 		// Look for the socket event name and do something with it here
 		// *** Remember to register your event names in initSocketManager() ***
 		switch (eventName) {
-			case "objectPositions":
+			case "broadcast":
 				// Send the JSON string to the position receiver
 				for (int i=0; i<positionReceiver.Length; i++) {
-					positionReceiver[i].UpdatePositionsFromJson(jsonString);
+					//positionReceiver[i].UpdatePositionsFromJson(jsonString);
 				}
+                Debug.Log(jsonString);
 				break;
 
 			case "trigger":
