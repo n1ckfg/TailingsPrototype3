@@ -1096,7 +1096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb9215efe8c67104ab6b3fb7bf99be65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oscController: {fileID: 1743049712}
+  oscController: {fileID: 857862391}
   emos:
   - {fileID: 1634765771}
   - {fileID: 43034482}
@@ -1188,7 +1188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rTex: {fileID: 8400000, guid: 60f59a1570900f947abd4465a211166b, type: 2}
-  oscController: {fileID: 1743049712}
+  oscController: {fileID: 857862391}
   meshFilter:
   - {fileID: 159404685}
   - {fileID: 2065951105}
@@ -10711,7 +10711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1743049712
 MonoBehaviour:
   m_ObjectHideFlags: 0
