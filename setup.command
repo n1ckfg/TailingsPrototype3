@@ -1,5 +1,7 @@
 #!/bin/bash
 
+BASE_URL="https://fox-gieg.com/patches/github/n1ckfg/TailingsPrototype3/Assets"
+
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
   DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
@@ -11,6 +13,11 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 cd $DIR
 
 cd Assets/Plugins
-wget "https://fox-gieg.com/patches/github/n1ckfg/TailingsPrototype3/Assets/Plugins.zip"
-unzip Plugins.zip
-rm Plugins.zip
+wget "$BASE_URL/Plugins1.zip"
+unzip Plugins1.zip
+rm Plugins1.zip
+
+cd ..
+wget "$BASE_URL/Plugins2.zip"
+unzip Plugins2.zip
+rm Plugins2.zip
