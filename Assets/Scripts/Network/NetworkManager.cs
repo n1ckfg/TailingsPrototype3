@@ -16,7 +16,7 @@ public class NetworkManager : MonoBehaviour {
 	public string serverAddress = "localhost";
 
 	// Point this to wherever you've got the ReceivePositions script.
-	public ReceiveMessage[] receivers;
+	public NetworkReceiver[] receivers;
 
 	// Enable/disable debugging
 	public bool showDebug = true;

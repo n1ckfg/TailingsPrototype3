@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EmoRig : MonoBehaviour {
 
-    public ReceiveMessage oscController;
+    public NetworkReceiver oscController;
     public EmoObj[] emos;
     public float[] scalers;
 

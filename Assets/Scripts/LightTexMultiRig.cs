@@ -10,7 +10,7 @@ public class LightTexMultiRig : MonoBehaviour {
 
 
     public RenderTexture rTex;
-    public ReceiveMessage oscController;
+    public NetworkReceiver oscController;
     public MeshFilter[] meshFilter;
     public GameObject groupPrefab;
     public LightPoint[] points;

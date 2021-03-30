@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReceiveMessage : MonoBehaviour {
+public class NetworkReceiver : MonoBehaviour {
 
     ///////////////////////////////////////////////////////////////////////
-    // This is meant to be changed as needed.
+    // Message receiver class; this is meant to be changed as needed.
     ////////////////////////////////////////////////////////////////////////
 
     // Make sure to point this to your Network Manager instance
@@ -33,6 +33,8 @@ public class ReceiveMessage : MonoBehaviour {
 
     // This is called from the network manager
     public void UpdateData(EcgMessageRaw msg) {
+        ecgMessage.player_index = msg.player_index;
+
         NetworkUtil.setMinMax(ref ecgMessage.ecg.placeHolder1, msg.ecg[0]);
         NetworkUtil.setMinMax(ref ecgMessage.ecg.ecgRaw, msg.ecg[1]);
         NetworkUtil.setMinMax(ref ecgMessage.ecg.ecgCooked, msg.ecg[2]);
@@ -58,7 +60,7 @@ public class ReceiveMessage : MonoBehaviour {
 
     private void initStructs() {
         ecgMessage = new EcgMessage();
-        ecgMessage.player_index = listenForThisId;
+        ecgMessage.player_index = 0;
 
         ecgMessage.ecg = new EcgData();
         ecgMessage.ecg.placeHolder1 = Vector3.zero;

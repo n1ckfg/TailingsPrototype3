@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour {
 
-    public ReceiveMessage oscController;
+    public NetworkReceiver oscController;
     public GameObject prefab;
     public bool randomSpawn = false;
     public int numObj = 10;
