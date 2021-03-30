@@ -116,8 +116,11 @@ public class NetworkManager : MonoBehaviour {
                 // Send the new data to the correct receiver
                 EcgMessageRaw msg = JsonUtility.FromJson<EcgMessageRaw>(jsonString);
 
-                receivers[0].UpdateData(msg);
-				break;
+                int index = msg.player_index - 1;
+                if (index >= 0 && index < receivers.Length) {
+                    receivers[index].UpdateData(msg);
+                }
+                break;
 		}
 	}
 

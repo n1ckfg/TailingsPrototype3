@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour {
 
     public ReceiveMessage oscController;
     public GameObject prefab;
+    public bool randomSpawn = false;
     public int numObj = 10;
     public float range = 5f;
     public float scaleBpm = 1f;
@@ -21,8 +22,10 @@ public class Spawner : MonoBehaviour {
             GameObject obj = GameObject.Instantiate(prefab);
             flightControls[i] = obj.GetComponent<FIMSpace.Basics.FBasic_FlyMovement>();
 
-            obj.transform.position = new Vector3(Random.Range(-range, range), Random.Range(-range, range), Random.Range(-range, range));
-            obj.transform.eulerAngles = new Vector3(Random.Range(-179f, 179f), Random.Range(-179f, 179f), Random.Range(-179f, 179f));
+            if (randomSpawn) {
+                obj.transform.position = new Vector3(Random.Range(-range, range), Random.Range(-range, range), Random.Range(-range, range));
+                obj.transform.eulerAngles = new Vector3(Random.Range(-179f, 179f), Random.Range(-179f, 179f), Random.Range(-179f, 179f));
+            }
         }
     }
 
