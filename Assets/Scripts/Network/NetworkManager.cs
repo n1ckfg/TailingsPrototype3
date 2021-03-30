@@ -4,9 +4,9 @@ using BestHTTP.SocketIO;
 
 public class NetworkManager : MonoBehaviour {
 
-	///////////////////////////////////////////////////////////////////////
-	// This is the Network Manager that takes care of communicating with the
-	// node server. It depends on the BestHTTP Pro package from the unity store.
+    ///////////////////////////////////////////////////////////////////////
+    // The Network Manager handles communication with the node server. 
+    // It depends on the BestHTTP Pro package from the Unity store.
 	////////////////////////////////////////////////////////////////////////
 
 	// Set the network ID of this machine (Can be any unique int)
@@ -16,9 +16,7 @@ public class NetworkManager : MonoBehaviour {
 	public string serverAddress = "localhost";
 
 	// Point this to wherever you've got the ReceivePositions script.
-	public ReceiveMessage[] positionReceiver;
-
-	public ReceiveMessage triggerReceiver;
+	public ReceiveMessage[] receivers;
 
 	// Enable/disable debugging
 	public bool showDebug = true;
@@ -33,6 +31,9 @@ public class NetworkManager : MonoBehaviour {
 	}
 
     private void Start () {
+        // There are a lot of different ways to format a websocket url.
+        // This is meant for communication between a Unity WebGL client and a remote node.js server.
+        // Socket.io 2 is assumed.
         socketAddress = "https://" + serverAddress + "/socket.io/";
 
         initSocketManager(socketAddress);
@@ -115,54 +116,18 @@ public class NetworkManager : MonoBehaviour {
 		// *** Remember to register your event names in initSocketManager() ***
 		switch (eventName) {
 			case "broadcast":
-				// Send the JSON string to the position receiver
-				for (int i=0; i<positionReceiver.Length; i++) {
-					//positionReceiver[i].UpdatePositionsFromJson(jsonString);
-				}
+                // Send the JSON string to the position receiver
+                EcgMessageRaw msg = NetworkUtil.JsonToEcgMessageRaw(jsonString);
+                int index = msg.player_index;
+                if (index < receivers.Length) {
+                    receivers[index].UpdateDataFromJson(jsonString);
+                }
                 Debug.Log(jsonString);
 				break;
-
-			case "trigger":
-				// Just an example. Work your own magic here :-D
-				//Debug.Log("Got Trigger from: " + ParseTriggerSource(jsonString) );
-				//Debug.Log(jsonString);
-				//triggerReceiver.ProcessTrigger(jsonString);
-				break;
 		}
 	}
 
-	// This is called from SendPosition.cs
-	public void SendPosData(string posData) {
-		// Here you are sending to the server. Make sure that the server
-		// is listening for this event name.
-		socketManager.Socket.Emit("newPosData", posData);
-	}
-
-	// This can be called from anywhere
-	public void SendTrigger(string triggerData) {
-		// Here you are sending to the server. Make sure that the server
-		// is listening for this event name.
-
-		//print(triggerData);
-		socketManager.Socket.Emit("trigger", triggerData);
-	}
-
-	// Helpers and cleanup
-
-	// Try to an int out of the incoming trigger payload, which
-	// should just be the sending ID cast to a string.
-	private int ParseTriggerSource(string incoming) {
-		int incomingId;
-		bool success = Int32.TryParse(incoming, out incomingId);
-		if (success) { return incomingId; }
-
-		if (showDebug) {
-			Debug.LogWarning("Could not get source ID of incoming trigger");
-		}
-		return -1;
-	}
-
-	// Try to gracefully close the socket connection
+	// Gracefully close the socket connection
 	private void OnApplicationQuit() {
 		socketManager.Close();
 		if (showDebug) {
