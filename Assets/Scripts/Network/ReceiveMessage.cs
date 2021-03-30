@@ -5,12 +5,8 @@ using UnityEngine;
 public class ReceiveMessage : MonoBehaviour {
 
     ///////////////////////////////////////////////////////////////////////
-    // This is built in a totally non-scalable way, to make it
-    // easier to understand and then change as needed.
+    // This is meant to be changed as needed.
     ////////////////////////////////////////////////////////////////////////
-
-    public enum LerpPositions { NONE, POS, ROT, POS_ROT };
-    public LerpPositions lerpPositions = LerpPositions.POS_ROT;
 
     // Make sure to point this to your Network Manager instance
     public NetworkManager netManager;
@@ -20,71 +16,73 @@ public class ReceiveMessage : MonoBehaviour {
     // wrap this in a way where you instantiate new elements as you
     // detect new ID's, but this hard-coded way should be clear enough
     // to modify.
-    public int listenForThisID;
-    public Transform headTransform;
-    public Transform leftHandTransform;
-    public Transform rightHandTransform;
-    public float smooth = 0.5f;
-
-    private Vector3 headPos;
-    private Quaternion headRot;
-    private Vector3 leftHandPos;
-    private Quaternion leftHandRot;
-    private Vector3 rightHandPos;
-    private Quaternion rightHandRot;
+    public int listenForThisId;
+    public EcgMessage ecgMessage;
 
     // We'll get these from the Network Manager at runtime:
     private bool showDebug;
-    private int uniqueID;
+    private int uniqueId;
 
     private void Start() {
         // Set these vars from the Network Manager:
         showDebug = netManager.showDebug;
-        uniqueID = netManager.uniqueID;
+        uniqueId = netManager.uniqueId;
 
-        headPos = new Vector3(headTransform.position.x, headTransform.position.y, headTransform.position.z);
-        headRot = new Quaternion(headTransform.rotation.x, headTransform.rotation.y, headTransform.rotation.z, headTransform.rotation.w);
-
-        leftHandPos = new Vector3(leftHandTransform.position.x, leftHandTransform.position.y, leftHandTransform.position.z);
-        leftHandRot = new Quaternion(leftHandTransform.rotation.x, leftHandTransform.rotation.y, leftHandTransform.rotation.z, leftHandTransform.rotation.w);
-
-        rightHandPos = new Vector3(rightHandTransform.position.x, rightHandTransform.position.y, rightHandTransform.position.z);
-        rightHandRot = new Quaternion(rightHandTransform.rotation.x, rightHandTransform.rotation.y, rightHandTransform.rotation.z, rightHandTransform.rotation.w);
-    }
-
-    private void Update() {
-        if (lerpPositions == LerpPositions.POS || lerpPositions == LerpPositions.POS_ROT) {
-            headTransform.position = Vector3.Lerp(headTransform.position, headPos, smooth);
-            leftHandTransform.position = Vector3.Lerp(leftHandTransform.position, leftHandPos, smooth);
-            rightHandTransform.position = Vector3.Lerp(rightHandTransform.position, rightHandPos, smooth);
-        } else {
-            headTransform.position = headPos;
-            leftHandTransform.position = leftHandPos;
-            rightHandTransform.position = rightHandPos;
-        }
-
-        if (lerpPositions == LerpPositions.ROT || lerpPositions == LerpPositions.POS_ROT) {
-            headTransform.rotation = Quaternion.Lerp(headTransform.rotation, headRot, smooth);
-            leftHandTransform.rotation = Quaternion.Lerp(leftHandTransform.rotation, leftHandRot, smooth);
-            rightHandTransform.rotation = Quaternion.Lerp(rightHandTransform.rotation, rightHandRot, smooth);
-        } else {
-            headTransform.rotation = headRot;
-            leftHandTransform.rotation = leftHandRot;
-            rightHandTransform.rotation = rightHandRot;
-        }
-    }
+        initStructs();
+     }
 
     // This is called from the network manager
-    public void UpdateDataFromJson(string json) {
-        List<UserPosition> positions = NetworkUtil.JSONToUserPosList(json);
+    public void UpdateData(EcgMessageRaw msg) {
+        NetworkUtil.setMinMax(ref ecgMessage.ecg.placeHolder1, msg.ecg[0]);
+        NetworkUtil.setMinMax(ref ecgMessage.ecg.ecgRaw, msg.ecg[1]);
+        NetworkUtil.setMinMax(ref ecgMessage.ecg.ecgCooked, msg.ecg[2]);
+        NetworkUtil.setMinMax(ref ecgMessage.ecg.bpm, msg.ecg[3]);
+        NetworkUtil.setMinMax(ref ecgMessage.ecg.r2r, msg.ecg[4]);
+        NetworkUtil.setMinMax(ref ecgMessage.ecg.resp, msg.ecg[5]);
+        NetworkUtil.setMinMax(ref ecgMessage.ecg.respRate, msg.ecg[6]);
+        NetworkUtil.setMinMax(ref ecgMessage.ecg.placeHolder8, msg.ecg[7]);
+        NetworkUtil.setMinMax(ref ecgMessage.ecg.placeHolder9, msg.ecg[8]);
+        NetworkUtil.setMinMax(ref ecgMessage.ecg.placeHolder10, msg.ecg[9]);
 
-        // Don't do anything if you're receiving empty data.
-        if (positions.Count == 0) {
-            if (showDebug) {
-                Debug.LogWarning("Position array from server was empty");
-            }
-            return;
-        }
+        NetworkUtil.setMinMax(ref ecgMessage.art_chem.delight, msg.art_chem[0]);
+        NetworkUtil.setMinMax(ref ecgMessage.art_chem.desire, msg.art_chem[1]);
+        NetworkUtil.setMinMax(ref ecgMessage.art_chem.sadness, msg.art_chem[2]);
+        NetworkUtil.setMinMax(ref ecgMessage.art_chem.fear, msg.art_chem[3]);
+        NetworkUtil.setMinMax(ref ecgMessage.art_chem.ambivalence, msg.art_chem[4]);
+        NetworkUtil.setMinMax(ref ecgMessage.art_chem.aggressiveness, msg.art_chem[5]);
+        NetworkUtil.setMinMax(ref ecgMessage.art_chem.friendliness, msg.art_chem[6]);
+        NetworkUtil.setMinMax(ref ecgMessage.art_chem.excitement, msg.art_chem[7]);
+        NetworkUtil.setMinMax(ref ecgMessage.art_chem.cowardice, msg.art_chem[8]);
+        NetworkUtil.setMinMax(ref ecgMessage.art_chem.melancholy, msg.art_chem[9]);
+    }
+
+    private void initStructs() {
+        ecgMessage = new EcgMessage();
+        ecgMessage.player_index = listenForThisId;
+
+        ecgMessage.ecg = new EcgData();
+        ecgMessage.ecg.placeHolder1 = Vector3.zero;
+        ecgMessage.ecg.ecgRaw = Vector3.zero;
+        ecgMessage.ecg.ecgCooked = Vector3.zero;
+        ecgMessage.ecg.bpm = Vector3.zero;
+        ecgMessage.ecg.r2r = Vector3.zero;
+        ecgMessage.ecg.resp = Vector3.zero;
+        ecgMessage.ecg.respRate = Vector3.zero;
+        ecgMessage.ecg.placeHolder8 = Vector3.zero;
+        ecgMessage.ecg.placeHolder9 = Vector3.zero;
+        ecgMessage.ecg.placeHolder10 = Vector3.zero;
+
+        ecgMessage.art_chem = new EmotionData();
+        ecgMessage.art_chem.delight = Vector3.zero;
+        ecgMessage.art_chem.desire = Vector3.zero;
+        ecgMessage.art_chem.sadness = Vector3.zero;
+        ecgMessage.art_chem.fear = Vector3.zero;
+        ecgMessage.art_chem.ambivalence = Vector3.zero;
+        ecgMessage.art_chem.aggressiveness = Vector3.zero;
+        ecgMessage.art_chem.friendliness = Vector3.zero;
+        ecgMessage.art_chem.excitement = Vector3.zero;
+        ecgMessage.art_chem.cowardice = Vector3.zero;
+        ecgMessage.art_chem.melancholy = Vector3.zero;
     }
 
 }

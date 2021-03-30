@@ -6158,6 +6158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 857862390}
   - component: {fileID: 857862389}
+  - component: {fileID: 857862391}
   m_Layer: 0
   m_Name: NETWORK_MANAGER
   m_TagString: Untagged
@@ -6177,11 +6178,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa4162867a444f65b2ac6ced6227470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 11
+  uniqueId: 11
   serverAddress: verticalstudio.glitch.me
-  serverPort: 8080
-  positionReceiver: []
-  triggerReceiver: {fileID: 0}
+  receivers:
+  - {fileID: 857862391}
   showDebug: 1
 --- !u!4 &857862390
 Transform:
@@ -6197,6 +6197,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &857862391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857862388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dfeb4e472cd54310b1a76db2e06ed24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  netManager: {fileID: 857862389}
+  listenForThisId: 1
+  ecgMessage:
+    player_index: 0
+    ecg:
+      placeHolder1: {x: 0, y: 0, z: 0}
+      ecgRaw: {x: 0, y: 0, z: 0}
+      ecgCooked: {x: 0, y: 0, z: 0}
+      bpm: {x: 0, y: 0, z: 0}
+      r2r: {x: 0, y: 0, z: 0}
+      resp: {x: 0, y: 0, z: 0}
+      respRate: {x: 0, y: 0, z: 0}
+      placeHolder8: {x: 0, y: 0, z: 0}
+      placeHolder9: {x: 0, y: 0, z: 0}
+      placeHolder10: {x: 0, y: 0, z: 0}
+    art_chem:
+      delight: {x: 0, y: 0, z: 0}
+      desire: {x: 0, y: 0, z: 0}
+      sadness: {x: 0, y: 0, z: 0}
+      fear: {x: 0, y: 0, z: 0}
+      ambivalence: {x: 0, y: 0, z: 0}
+      aggressiveness: {x: 0, y: 0, z: 0}
+      friendliness: {x: 0, y: 0, z: 0}
+      excitement: {x: 0, y: 0, z: 0}
+      cowardice: {x: 0, y: 0, z: 0}
+      melancholy: {x: 0, y: 0, z: 0}
 --- !u!1001 &894061754
 PrefabInstance:
   m_ObjectHideFlags: 0

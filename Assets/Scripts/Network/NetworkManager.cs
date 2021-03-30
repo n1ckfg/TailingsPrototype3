@@ -10,7 +10,7 @@ public class NetworkManager : MonoBehaviour {
 	////////////////////////////////////////////////////////////////////////
 
 	// Set the network ID of this machine (Can be any unique int)
-	public int uniqueID;
+	public int uniqueId;
 
 	// Set the local network address and port of the server
 	public string serverAddress = "localhost";
@@ -33,7 +33,7 @@ public class NetworkManager : MonoBehaviour {
     private void Start () {
         // There are a lot of different ways to format a websocket url.
         // This is meant for communication between a Unity WebGL client and a remote node.js server.
-        // Socket.io 2 is assumed.
+        // *** Socket.io 2 is assumed. ***
         socketAddress = "https://" + serverAddress + "/socket.io/";
 
         initSocketManager(socketAddress);
@@ -48,7 +48,6 @@ public class NetworkManager : MonoBehaviour {
 
 		// If you define new socket routes, make sure to register them here:
 		socketManager.Socket.On("broadcast", ReceivedLocalSocketMessage);
-		socketManager.Socket.On("trigger", ReceivedLocalSocketMessage);
 	}
 
 	// Confirm that socket has successfully connected
@@ -88,10 +87,9 @@ public class NetworkManager : MonoBehaviour {
 		}
 	}
 
-	// Do stuff with the incoming socket data
+	// Use the incoming socket data
 	private void ReceivedLocalSocketMessage(Socket socket, Packet packet, params object[] args) {
-		// This bit parses and formats the incoming data so that we can use
-		// Unity's built-in JSON parser
+		// This checks the incoming data so it's compatible with Unity's built-in JSON parser
 		string eventName = "data";
 		string jsonString;
 		if (packet.SocketIOEvent == SocketIOEventTypes.Event) {
@@ -104,8 +102,7 @@ public class NetworkManager : MonoBehaviour {
 			jsonString = packet.ToString();
 		}
 
-		// Uncomment this to show the raw incoming data from the
-		// server as part of your debug dump:
+		// Uncomment this to show the raw incoming data from the server as part of your debug dump:
 		/*
 		if (showDebug) {
 			Debug.Log(DateTime.Now + " - " + "Local Socket Event Name: " + eventName + " - Message: " + jsonString);
@@ -116,13 +113,10 @@ public class NetworkManager : MonoBehaviour {
 		// *** Remember to register your event names in initSocketManager() ***
 		switch (eventName) {
 			case "broadcast":
-                // Send the JSON string to the position receiver
-                EcgMessageRaw msg = NetworkUtil.JsonToEcgMessageRaw(jsonString);
-                int index = msg.player_index;
-                if (index < receivers.Length) {
-                    receivers[index].UpdateDataFromJson(jsonString);
-                }
-                Debug.Log(jsonString);
+                // Send the new data to the correct receiver
+                EcgMessageRaw msg = JsonUtility.FromJson<EcgMessageRaw>(jsonString);
+
+                receivers[0].UpdateData(msg);
 				break;
 		}
 	}

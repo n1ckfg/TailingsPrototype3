@@ -4,10 +4,11 @@ using System.Collections.Generic;
 // Handles object/JSON conversion
 public static class NetworkUtil {
 
-	// Parse incoming JSON positions from server
-	public static EcgMessageRaw JsonToEcgMessageRaw(string json) {
-        EcgMessageRaw msg = JsonUtility.FromJson<EcgMessageRaw>(json);
-		return msg;
-	}
+    public static void setMinMax(ref Vector3 result, float input) {
+        result.x = input;
+        if (result.y < input) result.y = input;
+        if (result.z > input) result.z = input;
+        result = result.normalized;
+    }
 
 }
