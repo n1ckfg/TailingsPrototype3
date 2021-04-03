@@ -48,3 +48,10 @@ public struct EmotionData {
     public Vector3 cowardice;
     public Vector3 melancholy;
 }
+
+[System.Serializable]
+public struct VideoMessage {
+    public string unique_id;
+    public string video;
+    public string timestamp;
+}

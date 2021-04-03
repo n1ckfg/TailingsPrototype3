@@ -17,6 +17,7 @@ public class NetworkManager : MonoBehaviour {
 
 	// Point this to wherever you've got the ReceivePositions script.
 	public NetworkReceiver[] receivers;
+	public NetworkWsVideo wsVideoReceiver;
 
 	// Enable/disable debugging
 	public bool showDebug = true;
@@ -46,8 +47,9 @@ public class NetworkManager : MonoBehaviour {
 		socketManager.Socket.On("connect", SocketConnected);
 		socketManager.Socket.On("reconnect", SocketConnected);
 
-		// If you define new socket routes, make sure to register them here:
+		// *** If you define new socket routes, make sure to register them here! ***
 		socketManager.Socket.On("broadcast", ReceivedLocalSocketMessage);
+		socketManager.Socket.On("video", ReceivedLocalSocketMessage);
 	}
 
 	// Confirm that socket has successfully connected
@@ -114,13 +116,18 @@ public class NetworkManager : MonoBehaviour {
 		switch (eventName) {
 			case "broadcast":
                 // Send the new data to the correct receiver
-                EcgMessageRaw msg = JsonUtility.FromJson<EcgMessageRaw>(jsonString);
+                EcgMessageRaw msg1 = JsonUtility.FromJson<EcgMessageRaw>(jsonString);
 
-                int index = msg.player_index - 1;
+                int index = msg1.player_index - 1;
                 if (index >= 0 && index < receivers.Length) {
-                    receivers[index].UpdateData(msg);
+                    receivers[index].UpdateData(msg1);
                 }
                 break;
+			case "video":
+				VideoMessage msg2 = JsonUtility.FromJson<VideoMessage>(jsonString);
+				Debug.Log("Received video from: " + msg2.unique_id);
+				wsVideoReceiver.UpdateData(msg2);
+				break;
 		}
 	}
 
