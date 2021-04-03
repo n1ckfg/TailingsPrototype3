@@ -6204,6 +6204,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &861771913 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2574977190826783374, guid: d7c77c96a71800249abc578a94f84ce8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1462327393}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &894061754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10919,7 +10925,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   netManager: {fileID: 857862389}
-  rTex: {fileID: 8400000, guid: 6fbf1c6c14a23a0458b41288ae3e9da5, type: 2}
+  ren: {fileID: 861771913}
+  fps: 30
 --- !u!4 &2093966672
 Transform:
   m_ObjectHideFlags: 0
