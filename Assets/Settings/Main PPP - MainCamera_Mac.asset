@@ -121,7 +121,7 @@ MonoBehaviour:
         neutralWhiteLevel: 5.3
         neutralWhiteClip: 10
       basic:
-        postExposure: 1
+        postExposure: 1.5
         temperature: 0
         tint: 0
         hueShift: 0
@@ -130,8 +130,8 @@ MonoBehaviour:
       channelMixer:
         red: {x: 1, y: 0, z: 0}
         green: {x: 0, y: 1, z: 0}
-        blue: {x: 0, y: 0, z: 1}
-        currentEditingChannel: 0
+        blue: {x: 0, y: 0, z: 1.67}
+        currentEditingChannel: 2
       colorWheels:
         mode: 1
         log:
