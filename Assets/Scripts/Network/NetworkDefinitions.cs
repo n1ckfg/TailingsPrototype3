@@ -33,6 +33,8 @@ public struct EcgData {
     public Vector3 placeHolder8;
     public Vector3 placeHolder9;
     public Vector3 placeHolder10;
+    public Vector3 placeHolder11;
+    public Vector3 placeHolder12;
 }
 
 [System.Serializable]
