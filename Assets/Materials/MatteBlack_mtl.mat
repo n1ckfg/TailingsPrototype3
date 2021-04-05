@@ -72,7 +72,7 @@ Material:
     - _BaseLight: 0.35
     - _BlendOp: 0
     - _Brightness: 0.5
-    - _BumpScale: -0.41
+    - _BumpScale: 0.01
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
