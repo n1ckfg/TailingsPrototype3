@@ -167,6 +167,8 @@ MonoBehaviour:
       placeHolder8: {x: 0, y: 0, z: 0}
       placeHolder9: {x: 0, y: 0, z: 0}
       placeHolder10: {x: 0, y: 0, z: 0}
+      placeHolder11: {x: 0, y: 0, z: 0}
+      placeHolder12: {x: 0, y: 0, z: 0}
     art_chem:
       delight: {x: 0, y: 0, z: 0}
       desire: {x: 0, y: 0, z: 0}
@@ -318,6 +320,196 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab46d99d3dfdd4749a0fc27f58bf9721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &56605578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 56605581}
+  - component: {fileID: 56605580}
+  - component: {fileID: 56605579}
+  m_Layer: 0
+  m_Name: VIDEO_PLAYER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &56605579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56605578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2feedce2e2e63647b8f875ec0894a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _media: {fileID: 56605580}
+  _defaultTexture: {fileID: 0}
+  _material: {fileID: 2100000, guid: 338be295815f9a94a9335d1da37d8d41, type: 2}
+  _texturePropertyName: _MainTex
+  _offset: {x: 0, y: 0}
+  _scale: {x: 1, y: 1}
+--- !u!114 &56605580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56605578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638c870cac4da414fba921606d504407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_VideoLocation: 0
+  m_VideoPath: https://fox-gieg.com/patches/unity/tailings_prototype/test.mp4
+  m_AutoOpen: 1
+  m_AutoStart: 1
+  m_Loop: 1
+  m_Volume: 1
+  m_Balance: 0
+  m_Muted: 0
+  m_PlaybackRate: 1
+  m_Resample: 0
+  m_ResampleMode: 0
+  m_ResampleBufferSize: 5
+  m_Persistent: 0
+  m_videoMapping: 0
+  m_StereoPacking: 0
+  m_AlphaPacking: 0
+  m_DisplayDebugStereoColorTint: 0
+  m_FilterMode: 1
+  m_WrapMode: 1
+  m_AnisoLevel: 0
+  m_LoadSubtitles: 0
+  m_SubtitleLocation: 2
+  m_SubtitlePath: 
+  m_AudioHeadTransform: {fileID: 0}
+  m_AudioFocusEnabled: 0
+  m_AudioFocusTransform: {fileID: 0}
+  m_AudioFocusWidthDegrees: 90
+  m_AudioFocusOffLevelDB: 0
+  m_events:
+    m_PersistentCalls:
+      m_Calls: []
+  m_eventMask: -1
+  m_forceFileFormat: 0
+  _pauseMediaOnAppPause: 1
+  _playMediaOnAppUnpause: 1
+  m_sourceSampleRate: 0
+  m_sourceChannels: 0
+  m_manuallySetAudioSourceProperties: 0
+  _optionsWindows:
+    overridePath: 0
+    pathLocation: 2
+    path: 
+    videoApi: 0
+    useHardwareDecoding: 1
+    useUnityAudio: 0
+    forceAudioResample: 1
+    useTextureMips: 0
+    hintAlphaChannel: 0
+    useLowLatency: 0
+    forceAudioOutputDeviceName: 
+    preferredFilters: []
+    enableAudio360: 0
+    audio360ChannelMode: 0
+  _optionsMacOSX:
+    overridePath: 0
+    pathLocation: 2
+    path: 
+    audioMode: 0
+    httpHeaders: []
+    httpHeaderJson: 
+    keyServerURLOverride: 
+    keyServerAuthToken: 
+    base64EncodedKeyBlob: 
+  _optionsIOS:
+    overridePath: 0
+    pathLocation: 2
+    path: 
+    audioMode: 0
+    httpHeaders: []
+    httpHeaderJson: 
+    keyServerURLOverride: 
+    keyServerAuthToken: 
+    base64EncodedKeyBlob: 
+    useYpCbCr420Textures: 1
+    resumePlaybackOnAudioSessionRouteChange: 0
+  _optionsTVOS:
+    overridePath: 0
+    pathLocation: 2
+    path: 
+    audioMode: 0
+    httpHeaders: []
+    httpHeaderJson: 
+    keyServerURLOverride: 
+    keyServerAuthToken: 
+    base64EncodedKeyBlob: 
+    useYpCbCr420Textures: 1
+    resumePlaybackOnAudioSessionRouteChange: 0
+  _optionsAndroid:
+    overridePath: 0
+    pathLocation: 2
+    path: 
+    videoApi: 2
+    useFastOesPath: 0
+    showPosterFrame: 0
+    enableAudio360: 0
+    audio360ChannelMode: 0
+    preferSoftwareDecoder: 0
+    httpHeaders: []
+    httpHeaderJson: 
+    fileOffset: 0
+  _optionsWindowsPhone:
+    overridePath: 0
+    pathLocation: 2
+    path: 
+    useHardwareDecoding: 1
+    useUnityAudio: 0
+    forceAudioResample: 1
+    useTextureMips: 0
+    useLowLatency: 0
+  _optionsWindowsUWP:
+    overridePath: 0
+    pathLocation: 2
+    path: 
+    useHardwareDecoding: 1
+    useUnityAudio: 0
+    forceAudioResample: 1
+    useTextureMips: 0
+    useLowLatency: 0
+  _optionsWebGL:
+    overridePath: 0
+    pathLocation: 2
+    path: 
+    externalLibrary: 0
+    useTextureMips: 0
+  _optionsPS4:
+    overridePath: 0
+    pathLocation: 2
+    path: 
+--- !u!4 &56605581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56605578}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &93256484 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 500582586563796837, guid: bc69c326994861a4e831511abccb78c7,
@@ -813,6 +1005,8 @@ MonoBehaviour:
       placeHolder8: {x: 0, y: 0, z: 0}
       placeHolder9: {x: 0, y: 0, z: 0}
       placeHolder10: {x: 0, y: 0, z: 0}
+      placeHolder11: {x: 0, y: 0, z: 0}
+      placeHolder12: {x: 0, y: 0, z: 0}
     art_chem:
       delight: {x: 0, y: 0, z: 0}
       desire: {x: 0, y: 0, z: 0}
@@ -6428,6 +6622,8 @@ MonoBehaviour:
       placeHolder8: {x: 0, y: 0, z: 0}
       placeHolder9: {x: 0, y: 0, z: 0}
       placeHolder10: {x: 0, y: 0, z: 0}
+      placeHolder11: {x: 0, y: 0, z: 0}
+      placeHolder12: {x: 0, y: 0, z: 0}
     art_chem:
       delight: {x: 0, y: 0, z: 0}
       desire: {x: 0, y: 0, z: 0}
@@ -10301,6 +10497,8 @@ MonoBehaviour:
       placeHolder8: {x: 0, y: 0, z: 0}
       placeHolder9: {x: 0, y: 0, z: 0}
       placeHolder10: {x: 0, y: 0, z: 0}
+      placeHolder11: {x: 0, y: 0, z: 0}
+      placeHolder12: {x: 0, y: 0, z: 0}
     art_chem:
       delight: {x: 0, y: 0, z: 0}
       desire: {x: 0, y: 0, z: 0}
@@ -10925,8 +11123,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   netManager: {fileID: 857862389}
+  video: {fileID: 56605580}
   ren: {fileID: 861771913}
   fps: 30
+  bypass: 1
 --- !u!4 &2093966672
 Transform:
   m_ObjectHideFlags: 0
