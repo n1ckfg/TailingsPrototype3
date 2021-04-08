@@ -368,8 +368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 638c870cac4da414fba921606d504407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_VideoLocation: 0
-  m_VideoPath: https://fox-gieg.com/patches/unity/tailings_prototype/test.mp4
+  m_VideoLocation: 2
+  m_VideoPath: test.mp4
   m_AutoOpen: 1
   m_AutoStart: 1
   m_Loop: 1
@@ -1339,8 +1339,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 698434352}
-  - component: {fileID: 698434351}
-  - component: {fileID: 698434354}
   - component: {fileID: 698434353}
   m_Layer: 0
   m_Name: LIGHT_RIG
@@ -1349,29 +1347,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &698434351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 698434350}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02bafc96daced6f4e9604eb5e8666e3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  oscController: {fileID: 1743049712}
-  meshFilter: {fileID: 0}
-  groupPrefab: {fileID: 3166619525214049967, guid: f020c31efd0263c4082ae4945ed4a7dc,
-    type: 3}
-  groups: []
-  ledUpdateInterval: 0.1
-  ledLerpSpeed: 0.8
-  ledScale: 2
-  pointBatch: 400
-  ready: 0
-  defaultColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!4 &698434352
 Transform:
   m_ObjectHideFlags: 0
@@ -1408,36 +1383,11 @@ MonoBehaviour:
   groupPrefab: {fileID: 3166619525214049967, guid: f020c31efd0263c4082ae4945ed4a7dc,
     type: 3}
   groups: []
-  ledUpdateInterval: 0.1
+  ledUpdateInterval: 0.3
   ledLerpSpeed: 0.8
   ledScale: 10
-  pointBatch: 600
-  sampleSkip: 2
-  ready: 0
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!114 &698434354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 698434350}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e112983c5b9fd6d44ac73a751adfbc45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rTex: {fileID: 8400000, guid: 60f59a1570900f947abd4465a211166b, type: 2}
-  oscController: {fileID: 1743049712}
-  meshFilter: {fileID: 0}
-  groupPrefab: {fileID: 3166619525214049967, guid: f020c31efd0263c4082ae4945ed4a7dc,
-    type: 3}
-  groups: []
-  ledUpdateInterval: 0.1
-  ledLerpSpeed: 0.8
-  ledScale: 10
-  pointBatch: 100
-  sampleSkip: 2
+  pointBatch: 800
+  sampleSkip: 4
   ready: 0
   defaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &750737579

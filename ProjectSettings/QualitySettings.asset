@@ -8,9 +8,9 @@ QualitySettings:
   m_QualitySettings:
   - serializedVersion: 2
     name: Ultra
-    pixelLightCount: 4
+    pixelLightCount: 2
     shadows: 0
-    shadowResolution: 2
+    shadowResolution: 1
     shadowProjection: 1
     shadowCascades: 4
     shadowDistance: 150
