@@ -11124,8 +11124,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   netManager: {fileID: 857862389}
   video: {fileID: 56605580}
+  videoMaterialControl: {fileID: 56605579}
   ren: {fileID: 861771913}
-  fps: 30
+  fps: 15
   bypass: 1
 --- !u!4 &2093966672
 Transform:

@@ -6,6 +6,7 @@ public class NetworkWsVideo : MonoBehaviour {
 
     public NetworkManager netManager;
     public RenderHeads.Media.AVProVideo.MediaPlayer video;
+    public RenderHeads.Media.AVProVideo.ApplyToMaterial videoMaterialControl;
     public Renderer ren;
     public float fps = 30f;
     public bool bypass = true;
@@ -22,27 +23,28 @@ public class NetworkWsVideo : MonoBehaviour {
     private void Update() {
         if (Input.GetKeyUp(KeyCode.Tab)) {
             bypass = !bypass;
+            videoMaterialControl.enabled = bypass;
             if (bypass) {
-                video.Stop();
-            } else {
                 video.Play();
+            } else {
+                video.Stop();
             }
         }
     }
 
 	private IEnumerator UpdateTexture(VideoMessage msg) {
-        if (msg.video.Length > 1) {
+        if (!bypass && msg.video.Length > 1) {
             tex.LoadImage(System.Convert.FromBase64String(msg.video));
             tex.Apply();
             ren.sharedMaterial.mainTexture = tex;
-            ren.sharedMaterial.SetTexture("_EmissionMap", tex);
+            //ren.sharedMaterial.SetTexture("_EmissionMap", tex);
         }
         yield return new WaitForSeconds(fpsInterval);
         blocked = false;
 	}
 
 	public void UpdateData(VideoMessage msg) {
-        if (!blocked && !bypass) {
+        if (!blocked) {
             blocked = true;
             StartCoroutine(UpdateTexture(msg));
         }
